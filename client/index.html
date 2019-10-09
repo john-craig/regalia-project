@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Marist Regalia Order Page</title>
-</head>
+    <head>
+        <title>Marist Regalia Order Page</title>
+
+        <link rel="stylesheet" type="text/css" href="public/css/index.css">
+    </head>
 
 <body>
-    <div>
-        <h1>Marist College</h1>
+    <div id="header">
+        <h1 style="padding-top: 30px; padding-left: 10px; font-size: 42px">Marist College</h1>
     </div>
-    <div>
-        <form>
-        <fieldset>
-            <legend>Please select one of the following:</legend>
+    <br />
+    <div id="selBox">
+        <form id="boxContents">
+            <fieldset>          
+                <legend>Please select one of the following:</legend>
 
-            <div>
-                <input type="radio" name="selection" value="keep">I am keeping my order the same this year<br>
-                <input type="radio" name="selection" value="change">I want to modify my order for this year<br>
-                <input type="radio" name="selection" value="none">I am not making an order for this year
-            </div>
+                <div id="buttons">
+                    <input type="radio" name="sel" value="keep">I am keeping my order the same this year<br>
+                    <input type="radio" name="sel" value="change" id="mod">I want to modify my order for this year<br>
+                    <input type="radio" name="sel" value="none">I am not making an order for this year
+                </div>
             </fieldset>
-        <br>
-        <button type="button">Select</button>
-        
+            <button type="button" onclick="indSelection()" id="sub">Select</button>
         </form>
     </div>
+
+    <script type="text/javascript" src="public/js/index.js"></script>
 </body>
 </html>
