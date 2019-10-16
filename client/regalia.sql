@@ -1,36 +1,52 @@
+CREATE DATABASE regalia;
 
+CREATE TABLE orders (
+    Date_Posted date NOT NULL,
+    FacultyID int NOT NULL,
+    RegaliaID int NOT NULL,
+    PRIMARY KEY (Date_Posted),
+    PRIMARY KEY (FacultyID),
+    PRIMARY KEY (RegaliaID),
+    FOREIGN KEY (FacultyID) REFERENCES faculty (FacultyID),
+    FOREIGN KEY (RegaliaID) REFERENCES regalia (RegaliaID)
+);
 
-CREATE DATABASE `regalia`; 
+CREATE TABLE faculty (
+    FacultyID int NOT NULL,
+    First_Name text DEFAULT '',
+    Last_Name text DEFAULT '',
+    Email text DEFAULT ''
+    PRIMARY KEY (FacultyID)
+);
 
-CREATE TABLE `caps` (
-  `CapID` int(11) DEFAULT NULL,
-  `Cap_Size` text
+CREATE TABLE regalia (
+    RegaliaID int NOT NULL,
+    GownID int DEFAULT -1,
+    CapID int DEFAULT -1,
+    CollegeID int DEFAULT -1
+    PRIMARY KEY (RegaliaID),
+    FOREIGN KEY (GownID) REFERENCES gowns (GownID),
+    FOREIGN KEY (CapID) REFERENCES caps (CapID),
+    FOREIGN KEY (CollegeID) REFERENCES colleges (CollegeID)
 );
-CREATE TABLE `colleges` (
-  `CollegeID` int(11) DEFAULT NULL,
-  `Name` text,
-  `City` text,
-  `State` text
+
+CREATE TABLE gowns (
+    GownID int NOT NULL,
+    Height text DEFAULT '',
+    Weight text DEFAULT '',
+    PRIMARY KEY (GownID)
 );
-CREATE TABLE `faculty` (
-  `FacultyID` int(11) DEFAULT NULL,
-  `First_Name` text,
-  `Last_Name` text,
-  `Email` text
+
+CREATE TABLE caps (
+    CapID int NOT NULL,
+    Cap_Size text DEFAULT '',
+    PRIMARY KEY (CapID)
 );
-CREATE TABLE `gowns` (
-  `GownID` int(11) DEFAULT NULL,
-  `Height` text,
-  `Weight` text
+
+CREATE TABLE colleges (
+    CollegeID int NOT NULL,
+    College_Name text DEFAULT '',
+    College_City text DEFAULT '',
+    College_State text DEFAULT ''
 );
-CREATE TABLE `orders` (
-  `Date_Ordered` date DEFAULT NULL,
-  `FacultyID` int(11) DEFAULT NULL,
-  `RegaliaID` int(11) DEFAULT NULL
-);
-CREATE TABLE `regalia` (
-  `RegaliaID` int(11) DEFAULT NULL,
-  `GownID` int(11) DEFAULT NULL,
-  `CapID` int(11) DEFAULT NULL,
-  `CollegeID` int(11) DEFAULT NULL
-);
+
