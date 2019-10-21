@@ -6,18 +6,16 @@ CREATE TABLE orders (
     Date_Posted date NOT NULL,
     FacultyID int NOT NULL,
     RegaliaID int NOT NULL,
-    PRIMARY KEY (Date_Posted),
-    PRIMARY KEY (FacultyID),
-    PRIMARY KEY (RegaliaID),
+    PRIMARY KEY (Date_Posted, FacultyID, RegaliaID),
     FOREIGN KEY (FacultyID) REFERENCES faculty (FacultyID),
     FOREIGN KEY (RegaliaID) REFERENCES regalia (RegaliaID)
 );
 
 CREATE TABLE faculty (
     FacultyID int NOT NULL,
-    First_Name text DEFAULT '',
-    Last_Name text DEFAULT '',
-    Email text DEFAULT ''
+    First_Name text,
+    Last_Name text,
+    Email text,
     PRIMARY KEY (FacultyID)
 );
 
@@ -34,21 +32,22 @@ CREATE TABLE regalia (
 
 CREATE TABLE gowns (
     GownID int NOT NULL,
-    Height text DEFAULT '',
-    Weight text DEFAULT '',
+    Height text,
+    Weight text,
     PRIMARY KEY (GownID)
 );
 
 CREATE TABLE caps (
     CapID int NOT NULL,
-    Cap_Size text DEFAULT '',
+    Cap_Size text,
     PRIMARY KEY (CapID)
 );
 
 CREATE TABLE colleges (
     CollegeID int NOT NULL,
-    College_Name text DEFAULT '',
-    College_City text DEFAULT '',
-    College_State text DEFAULT ''
+    College_Name text,
+    College_City text,
+    College_State text,
+    PRIMARY KEY (CollegeID)
 );
 
