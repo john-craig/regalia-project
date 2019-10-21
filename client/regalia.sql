@@ -2,32 +2,12 @@ DROP DATABASE if exists regalia;
 CREATE DATABASE regalia;
 USE regalia;
 
-CREATE TABLE orders (
-    Date_Posted date NOT NULL,
-    FacultyID int NOT NULL,
-    RegaliaID int NOT NULL,
-    PRIMARY KEY (Date_Posted, FacultyID, RegaliaID),
-    FOREIGN KEY (FacultyID) REFERENCES faculty (FacultyID),
-    FOREIGN KEY (RegaliaID) REFERENCES regalia (RegaliaID)
-);
-
 CREATE TABLE faculty (
-    FacultyID int NOT NULL,
+    FacultyID int NOT NULL DEFAULT 0,
     First_Name text,
     Last_Name text,
     Email text,
     PRIMARY KEY (FacultyID)
-);
-
-CREATE TABLE regalia (
-    RegaliaID int NOT NULL,
-    GownID int DEFAULT -1,
-    CapID int DEFAULT -1,
-    CollegeID int DEFAULT -1
-    PRIMARY KEY (RegaliaID),
-    FOREIGN KEY (GownID) REFERENCES gowns (GownID),
-    FOREIGN KEY (CapID) REFERENCES caps (CapID),
-    FOREIGN KEY (CollegeID) REFERENCES colleges (CollegeID)
 );
 
 CREATE TABLE gowns (
@@ -49,5 +29,25 @@ CREATE TABLE colleges (
     College_City text,
     College_State text,
     PRIMARY KEY (CollegeID)
+);
+
+CREATE TABLE regalia (
+    RegaliaID int NOT NULL,
+    GownID int DEFAULT 0,
+    CapID int DEFAULT 0,
+    CollegeID int DEFAULT 0,
+    PRIMARY KEY (RegaliaID),
+    FOREIGN KEY (GownID) REFERENCES gowns (GownID),
+    FOREIGN KEY (CapID) REFERENCES caps (CapID),
+    FOREIGN KEY (CollegeID) REFERENCES colleges (CollegeID)
+);
+
+CREATE TABLE orders (
+    Date_Posted date NOT NULL,
+    FacultyID int NOT NULL,
+    RegaliaID int NOT NULL,
+    PRIMARY KEY (Date_Posted, FacultyID, RegaliaID),
+    FOREIGN KEY (FacultyID) REFERENCES faculty (FacultyID),
+    FOREIGN KEY (RegaliaID) REFERENCES regalia (RegaliaID)
 );
 
