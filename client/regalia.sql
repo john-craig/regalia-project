@@ -1,4 +1,6 @@
+DROP DATABASE if exists regalia;
 CREATE DATABASE regalia;
+USE regalia;
 
 CREATE TABLE orders (
     Date_Posted date NOT NULL,
