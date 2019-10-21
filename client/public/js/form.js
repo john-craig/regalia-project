@@ -1,9 +1,15 @@
-var section = getElementsByClassName("collapsible")
-var selection = getElementsByName("choice")
+function initialize() {
+  var section = getElementsByClassName("collapsible")
+  var selection = getElementsByName("choice")
 
-for (i=0;i<section.length;i++) {
-  section[i].style.display = "none"
+  for (i=0;i<section.length;i++) {
+    section[i].style.display = "none"
+  }
+
 }
+
+initialize();
+
 
 /*coll[i].addEventListener("click", function() {
     this.classList.toggle("active");
