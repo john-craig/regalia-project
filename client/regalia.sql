@@ -31,23 +31,25 @@ CREATE TABLE colleges (
     PRIMARY KEY (CollegeID)
 );
 
-CREATE TABLE regalia (
-    RegaliaID int NOT NULL,
+CREATE TABLE orders (
+    Date_Posted date NOT NULL,
+    FacultyID int NOT NULL,
     GownID int DEFAULT 0,
     CapID int DEFAULT 0,
     CollegeID int DEFAULT 0,
-    PRIMARY KEY (RegaliaID),
+    PRIMARY KEY (Date_Posted, FacultyID),
     FOREIGN KEY (GownID) REFERENCES gowns (GownID),
     FOREIGN KEY (CapID) REFERENCES caps (CapID),
     FOREIGN KEY (CollegeID) REFERENCES colleges (CollegeID)
 );
 
-CREATE TABLE orders (
-    Date_Posted date NOT NULL,
-    FacultyID int NOT NULL,
-    RegaliaID int NOT NULL,
-    PRIMARY KEY (Date_Posted, FacultyID, RegaliaID),
-    FOREIGN KEY (FacultyID) REFERENCES faculty (FacultyID),
-    FOREIGN KEY (RegaliaID) REFERENCES regalia (RegaliaID)
-);
+INSERT INTO gowns
+VALUES (0, 'N/A', 'N/A');
+
+INSERT INTO caps
+VALUES (0, 'N/A');
+
+INSERT INTO faculty
+VALUES ('12345678', 'Brian', 'Gormanly', 'brian.gormanly@marist.edu');
+
 
