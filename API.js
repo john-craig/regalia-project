@@ -13,8 +13,8 @@ module.exports = pool;
 const pool = require('../data/config');
 
 // Display all users
-app.get('/users', (request, response) => {
-    pool.query('SELECT * FROM users', (error, result) => {
+app.get('/faculty', (request, response) => {
+    pool.query('SELECT * FROM faculty', (error, result) => {
         if (error) throw error;
  
         response.send(result);
@@ -22,24 +22,20 @@ app.get('/users', (request, response) => {
 });
 
 // Display a single user by ID
-app.get('/users/:id', (request, response) => {
+app.get('/faculty/:id', (request, response) => {
     const id = request.params.id;
  
-    pool.query('SELECT * FROM users WHERE id = ?', id, (error, result) => {
+    pool.query('SELECT * FROM faculty WHERE id = ?', id, (error, result) => {
         if (error) throw error;
  
         response.send(result);
     });
 });
 
-// Add a new user (POST)
-app.post('/users', (request, response) => {
-    ... 
-});
 
 // Add a new user
-app.post('/users', (request, response) => {
-    pool.query('INSERT INTO users SET ?', request.body, (error, result) => {
+app.post('/faculty', (request, response) => {
+    pool.query('INSERT INTO faculty SET ?', request.body, (error, result) => {
         if (error) throw error;
  
         response.status(201).send(`User added with ID: ${result.insertId}`);
@@ -47,10 +43,10 @@ app.post('/users', (request, response) => {
 });
 
 // Update an existing user
-app.put('/users/:id', (request, response) => {
+app.put('/faculty/:id', (request, response) => {
     const id = request.params.id;
  
-    pool.query('UPDATE users SET ? WHERE id = ?', [request.body, id], (error, result) => {
+    pool.query('UPDATE faculty SET ? WHERE id = ?', [request.body, id], (error, result) => {
         if (error) throw error;
  
         response.send('User updated successfully.');
