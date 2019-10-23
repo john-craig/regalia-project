@@ -1,17 +1,24 @@
 const mysql = require('mysql');
 // Set database connection credentials
-const config = {
+const config = mysql.createConnection ({
     host: '10.10.9.105',
     user: 'admin',
     password: 'Passw0rd',
     database: 'regalia',
-};
+});
 // Create a MySQL pool
-const pool = mysql.createPool(config);
-module.exports = pool;
+//const pool = mysql.createPool(config);
+//module.exports = pool;
 
-const pool = require('../data/config');
+//const pool = require('../data/config');
 
+config.connect ((err) => {
+    if(err) console.log(err);
+    console.log("Connected!");
+})
+
+
+/*
 // Display all users
 app.get('/users', (request, response) => {
     pool.query('SELECT * FROM users', (error, result) => {
@@ -34,7 +41,7 @@ app.get('/users/:id', (request, response) => {
 
 // Add a new user (POST)
 app.post('/users', (request, response) => {
-    ... 
+    //... 
 });
 
 // Add a new user
@@ -56,6 +63,6 @@ app.put('/users/:id', (request, response) => {
         response.send('User updated successfully.');
     });
 });
-
+*/
 
 
