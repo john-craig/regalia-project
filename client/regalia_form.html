@@ -12,27 +12,32 @@
     <br>
     <div id="selBox">
         <form id="boxContents">
-          <h2>I am ordering...</h2>
-          <div id="buttons">
-            <input type="radio" name="choice" value="keep">Cap Only<br>
-            <input type="radio" name="choice" value="change">Gown Only<br>
-            <input type="radio" name="choice" value="none">Cap and Gown
-          </div>
           
-          <div class="collapsible" id="cap_fields">
-            HELLO!
-          </div>
-          
-          <div class="collapsible" id="gown_fields">
-            MY NAME!  
-          </div>
-          
-          <div class="collapsible" id="college_fields">
-            IS STEVE!
-          </div>
-        <br>
-        <button type="button" onclick="indSelection()" id="sub">Submit</button>
+          <p>Cap Size</p>
+          <select type="text" name="degree">
+            <option value="x">X</option>
+          </select>
+          <br>
+          <p>Weight</p>
+          <input type="text" name="weight">
+          <br>
+          <p>Height</p>
+          <input type="text" name="height">
+          <br>
+          <p>Highest Degree</p>
+          <select type="text" name="degree">
+            <option value="x">X</option>
+          </select>
+          <br>
+          <p>College Recieved</p>
+          <input type="text" name="college_name">
+          <br>
+          <p>College Address</p>
+          <input type="text" name="college_location">
+          <br>
+          <button type="button" onclick="indSelection()" id="sub">Submit</button>
+          <br>
         </form>
-    </div>
+      </div>
 </body>
 </html>

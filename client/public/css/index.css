@@ -13,12 +13,16 @@ body {
     background-color: #D13636;
     color: white;
     text-align: left;
-    padding-left: 10px;
+    padding-top: 30px; padding-left: 10px; font-size: 42px"
+}
+
+#table {
+    width: 60%;
+    border-width: 5px;
 }
 
 #selBox {
     width: 30%;
-    height: 175px;
     border-style: ridge;
     border-width: 2px;
     border-color: black;
@@ -55,7 +59,4 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-}
-#collapsible {
-    display: none;
 }
