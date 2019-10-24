@@ -94,4 +94,4 @@ app.put('/users/:id', (request, response) => {
 */
 
 
-app.listen(port, () => console.log('Regalia running on port ${port}!'))
+app.listen(port, () => console.log('Regalia running on port ' + port))
