@@ -1,4 +1,10 @@
 const mysql = require('mysql');
+const express = require('express');
+
+const app = express()
+app.use(express.static('client/public'));
+const port = 5050;
+
 // Set database connection credentials
 const config = mysql.createConnection ({
     host: '10.10.9.105',
@@ -6,6 +12,7 @@ const config = mysql.createConnection ({
     password: 'Passw0rd',
     database: 'regalia',
 });
+
 // Create a MySQL pool
 //const pool = mysql.createPool(config);
 //module.exports = pool;
@@ -14,17 +21,30 @@ const config = mysql.createConnection ({
 
 config.connect ((err) => {
     if(err) console.log(err);
-    console.log("Connected!");
+    console.log("Database connected!");
 })
 
 
+app.get('/', function(req, res) {
+    res.sendFile('index.html', {root: './client'})
+});
 
+app.get('/admin', function(req, res) {
+    res.sendFile('admin.html', {root: './client'})
+});
+
+app.get('/form', function(req, res) {
+    res.sendFile('regalia_form.html', {root: './client'})
+});
+
+
+/*
 config.query('SELECT * FROM admins', (err, rows) => {
     if(err) console.log(err);
 
     console.log(rows);
 });
-
+*/
 
 /*
 // Display all users
@@ -74,3 +94,4 @@ app.put('/users/:id', (request, response) => {
 */
 
 
+app.listen(port, () => console.log('Regalia running on port ${port}!'))
