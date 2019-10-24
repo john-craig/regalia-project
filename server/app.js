@@ -18,6 +18,14 @@ config.connect ((err) => {
 })
 
 
+
+config.query('SELECT * FROM admins', (err, rows) => {
+    if(err) console.log(err);
+
+    console.log(rows);
+});
+
+
 /*
 // Display all users
 app.get('/users', (request, response) => {
