@@ -8,8 +8,6 @@ const config = {
 };
 // Create a MySQL pool
 const pool = mysql.createPool(config);
-module.exports = pool;
-
 const pool = require('../data/config');
 
 // Display all users
@@ -57,5 +55,4 @@ app.put('/users/:id', (request, response) => {
     });
 });
 
-
-
+module.exports = pool;
