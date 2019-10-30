@@ -3,7 +3,7 @@
 <head>
   <title>Marist Regalia Order Form</title>
   <link rel="stylesheet" type="text/css" href="public/css/index.css">
-  <script type="text/javascript" src="public/js/form.js"></script>
+  <meta charset="UTF-8">
 </head>
 <body>
     <div id="header">
@@ -11,31 +11,47 @@
     </div>
     <br>
     <div id="selBox">
-        <form id="boxContents">
+        <form id="boxContents" method="post" action="/api/submit">
+          <p>Name</p>
+          <input type="text" name="name">
+          <br>
           
-          <p>Cap Size</p>
-          <select type="text" name="degree">
+          <p>E-Mail</p>
+          <input type="text" name="email">
+          <br>
+          
+          <p>CWID</p>
+          <input type="text" name="cwid">
+          <br>
+          
+
+          <!-- <p>Cap Size</p>
+          <select type="text" name="cap_size">
             <option value="x">X</option>
           </select>
-          <br>
+          <br> -->
           <p>Weight</p>
           <input type="text" name="weight">
           <br>
           <p>Height</p>
           <input type="text" name="height">
           <br>
-          <p>Highest Degree</p>
+          <!-- <p>Highest Degree</p>
           <select type="text" name="degree">
             <option value="x">X</option>
           </select>
-          <br>
+          <br> -->
           <p>College Recieved</p>
           <input type="text" name="college_name">
           <br>
-          <p>College Address</p>
-          <input type="text" name="college_location">
+          <p>College City</p>
+          <input type="text" name="college_city">
           <br>
-          <button type="button" onclick="indSelection()" id="sub">Submit</button>
+          <p>College State</p>
+          <input type="text" name="college_state">
+          <br>
+          
+          <button type="submit" id="sub">Submit</button>
           <br>
         </form>
       </div>
