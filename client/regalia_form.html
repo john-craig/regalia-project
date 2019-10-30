@@ -13,47 +13,48 @@
     <div id="selBox">
         <form id="boxContents" method="post" action="/api/submit">
           <p>Name</p>
-          <input type="text" name="name">
+          <input type="text" name="name" id="name">
           <br>
           
           <p>E-Mail</p>
-          <input type="text" name="email">
+          <input type="text" name="email" id="email">
           <br>
           
           <p>CWID</p>
-          <input type="text" name="cwid">
+          <input type="text" name="cwid" id="cwid">
           <br>
           
 
           <!-- <p>Cap Size</p>
-          <select type="text" name="cap_size">
+          <select type="text" name="cap_size" id="cap">
             <option value="x">X</option>
           </select>
           <br> -->
           <p>Weight</p>
-          <input type="text" name="weight">
+          <input type="text" name="weight" id="weight">
           <br>
           <p>Height</p>
-          <input type="text" name="height">
+          <input type="text" name="height" id="height">
           <br>
           <!-- <p>Highest Degree</p>
-          <select type="text" name="degree">
+          <select type="text" name="degree" id="degree">
             <option value="x">X</option>
           </select>
           <br> -->
           <p>College Recieved</p>
-          <input type="text" name="college_name">
+          <input type="text" name="college_name" id="college">
           <br>
           <p>College City</p>
-          <input type="text" name="college_city">
+          <input type="text" name="college_city" id="city">
           <br>
           <p>College State</p>
-          <input type="text" name="college_state">
+          <input type="text" name="college_state" id="state">
           <br>
           
-          <button type="submit" id="sub">Submit</button>
+          <button type="submit" id="sub" onclick="submitForm()">Submit</button>
           <br>
         </form>
       </div>
+      <script type="text/javascript" src="public/js/form.js"></script>
 </body>
 </html>
