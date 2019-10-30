@@ -1,27 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Marist Regalia Admin Page</title>
+  <title>Marist Regalia Admin Page</title>
   
+  <link rel="stylesheet" type="text/css" href="public/css/index.css">
+  <script type="text/javascript" src="public/js/index.js"></script>
 </head>
 <body>
-    <div>
-        <h1>Regalia(Admin)</h1>
+    <div id="header">
+        <h1>Marist College</h1>
     </div>
-    <div>
-        <form>
-        <fieldset>
-          <legend>Current Orders</legend>
-          <div>
-            <input type="radio" name="choice" value="keep">Regalia Orders fufilled<br>
-            <input type="radio" name="choice" value="change">Awaiting Response<br>
-            <input type="radio" name="choice" value="none">Settings
-          </div>
-        </fieldset>
-        <br>
-        <button type="button">Submit</button>
+    <div id="selBox">
+        <form id="boxContents">
+            <h2>Viewing Orders For:</h2>
+            <select type="text" name="degree">
+                <option value="x">2020</option>
+            </select>
+
+            <table id="orders">
+                    <tr>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Age</th>
+                    </tr>
+                    <tr>
+                        <td>Jill</td>
+                        <td>Smith</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td>Eve</td>
+                        <td>Jackson</td>
+                        <td>94</td>
+                    </tr>
+            </table>
+            <button type="button" onclick="downloadSheet()" id="sub">Download</button>
+            <br>
         </form>
     </div>
-
 </body>
 </html>

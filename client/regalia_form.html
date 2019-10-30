@@ -1,26 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Marist Regalia Order Form</title>
+  <title>Marist Regalia Order Form</title>
+  <link rel="stylesheet" type="text/css" href="public/css/index.css">
+  <meta charset="UTF-8">
 </head>
 <body>
-    <div>
+    <div id="header">
         <h1>Marist College</h1>
     </div>
-    <div>
-        <form>
-        <fieldset>
-          <legend>I am ordering...</legend>
-          <div>
-            <input type="radio" name="choice" value="keep">Cap Only<br>
-            <input type="radio" name="choice" value="change">Gown Only<br>
-            <input type="radio" name="choice" value="none">Cap and Gown
-          </div>
-        </fieldset>
-        <br>
-        <button type="button">Submit</button>
-        </form>
-    </div>
+    <br>
+    <div id="selBox">
+        <form id="boxContents" method="post" action="/api/submit">
+          <p>Name</p>
+          <input type="text" name="name">
+          <br>
+          
+          <p>E-Mail</p>
+          <input type="text" name="email">
+          <br>
+          
+          <p>CWID</p>
+          <input type="text" name="cwid">
+          <br>
+          
 
+          <!-- <p>Cap Size</p>
+          <select type="text" name="cap_size">
+            <option value="x">X</option>
+          </select>
+          <br> -->
+          <p>Weight</p>
+          <input type="text" name="weight">
+          <br>
+          <p>Height</p>
+          <input type="text" name="height">
+          <br>
+          <!-- <p>Highest Degree</p>
+          <select type="text" name="degree">
+            <option value="x">X</option>
+          </select>
+          <br> -->
+          <p>College Recieved</p>
+          <input type="text" name="college_name">
+          <br>
+          <p>College City</p>
+          <input type="text" name="college_city">
+          <br>
+          <p>College State</p>
+          <input type="text" name="college_state">
+          <br>
+          
+          <button type="submit" id="sub">Submit</button>
+          <br>
+        </form>
+      </div>
 </body>
 </html>

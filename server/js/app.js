@@ -3,6 +3,8 @@ const express = require('express');
 
 const app = express()
 app.use(express.static('client/public'));
+app.use(bodyParser.urlencoded()); 
+app.use(bodyParser.json());
 const port = 5050;
 
 // Set database connection credentials
@@ -24,7 +26,6 @@ config.connect ((err) => {
     console.log("Database connected!");
 })
 
-
 app.get('/', function(req, res) {
     res.sendFile('index.html', {root: './client'})
 });
@@ -37,6 +38,17 @@ app.get('/form', function(req, res) {
     res.sendFile('regalia_form.html', {root: './client'})
 });
 
+app.post('/api/submit', function(req, res) {
+    var fac_sql = "INSERT INTO faculty (FacultyID, First_Name, Last_Name, Email) VALUES ()";
+    var gow_sql = "INSERT INTO gowns (Height, Weight) VALUES ()"
+    var cap_sql = "INSERT INTO caps (Cap_Size) VALUES ()"
+    var col_sql = "INSERT INTO college(College_Name, College_City, College_State) "
+
+    //con.query(fac_sql, function(err, result) {
+    //    if (err) throw err;
+    //});
+    console.log(req)
+});
 
 /*
 config.query('SELECT * FROM admins', (err, rows) => {
