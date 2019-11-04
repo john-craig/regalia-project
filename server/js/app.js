@@ -42,11 +42,20 @@ app.post('/api/submit', function(req, res) {
     var fac_sql = "INSERT INTO faculty (FacultyID, First_Name, Last_Name, Email) VALUES ()";
     var gow_sql = "INSERT INTO gowns (Height, Weight) VALUES ()"
     var cap_sql = "INSERT INTO caps (Cap_Size) VALUES ()"
-    var col_sql = "INSERT INTO college(College_Name, College_City, College_State) "
+    var col_sql = "INSERT INTO college(College_Name, College_City, College_State) VALUES () "
 
     //con.query(fac_sql, function(err, result) {
     //    if (err) throw err;
     //});
+    console.log(req)
+});
+
+app.post('/api/admin/add', function(req, res) {
+    var sql = "INSERT INTO admin (Email) VALUES (" + req.body + ")"
+
+    con.query(sql, function(err, result) {
+        if (err) throw err;
+    })
     console.log(req)
 });
 
