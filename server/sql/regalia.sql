@@ -43,6 +43,12 @@ CREATE TABLE orders (
     FOREIGN KEY (CollegeID) REFERENCES colleges (CollegeID)
 );
 
+CREATE TABLE admin (
+    AdminID int DEFAULT 0,
+    Email text,
+    PRIMARY KEY (AdminID)
+)
+
 INSERT INTO gowns
 VALUES (0, 'N/A', 'N/A');
 
