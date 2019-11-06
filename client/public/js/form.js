@@ -41,14 +41,13 @@ function submitForm() {
   }
   */
 
-  fetch('/api/submit', {
+  fetch('/submit', {
     method: 'post',
-    headers: {'Content-Type': 'application/json, charset=UTF-8'},
-    body: data
+    headers: {'Content-Type': 'application/json, charset=UTF-8'}
   })
-
+  
   //console.log(data);
-
+  //window.location = 'thanks';
 
   //api.submit(['testy boy', 'the dude', 'mad lad mcgee', 'shannon'])
 }

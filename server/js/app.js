@@ -44,13 +44,13 @@ app.get('/datatable', function(req, res) {
     res.sendFile('datatable.html', {root: './client'})
 });
 
-app.get('/thankyou', function(req, res){
+app.get('/thanks', function(req, res){
     res.sendFile('thanks.html', {root: './client'})
 });
 
 var tempData = [];
 
-app.post('/api/submit', function(req, res) {
+app.post('/submit', function(req, res) {
     
     var data = req.body;
 
@@ -82,7 +82,9 @@ app.post('/api/submit', function(req, res) {
     tempData.push(data);
 
     console.log(data);
+
     res.sendFile('thanks.html', {root: './client'})
+    
 })
 
 app.get('/api/datatable', function(req, res) {
