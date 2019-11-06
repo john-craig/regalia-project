@@ -8,11 +8,12 @@
 </head>
 <body>
     <div id="header">
-        <h1>Marist College</h1>
     </div>
-    <br>
+    <br />
+  <div id="mainContent">
+    <img src="images/logo.png">  
     <div id="selBox">
-        <form id="boxContents" method="post" action="/api/submit">
+        <form id="boxContents" method="post" action="/submit">
           <p>Name</p>
           <input type="text" name="name" id="name">
           <br>
@@ -51,11 +52,13 @@
           <p>College State</p>
           <input type="text" name="college_state" id="state">
           <br>
-          
-          <button type="submit" id="sub" onclick="submitForm()">Submit</button>
+          <br /> 
+          <div id="but"> 
+            <button type="submit" id="sub">Submit</button>
+          </div>
           <br>
         </form>
       </div>
-      
+  </div>    
 </body>
 </html>

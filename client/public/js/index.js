@@ -3,6 +3,6 @@ function indSelection() {
         window.location = 'form';
     }
     else {
-        window.location = 'thankyou'
+        window.location = 'thanks'
     }
 }

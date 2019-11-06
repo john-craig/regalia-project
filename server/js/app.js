@@ -1,8 +1,9 @@
 const mysql = require('mysql');
 const express = require('express');
 const bodyParser = require('body-parser');
-
+const router = express.Router();
 const app = express()
+
 app.use(express.static('client/public'));
 app.use(bodyParser.urlencoded()); 
 app.use(bodyParser.json());
@@ -39,43 +40,55 @@ app.get('/form', function(req, res) {
     res.sendFile('regalia_form.html', {root: './client'})
 });
 
-app.get('/thankyou', function(req, res){
+app.get('/datatable', function(req, res) {
+    res.sendFile('datatable.html', {root: './client'})
+});
+
+app.get('/thanks', function(req, res){
     res.sendFile('thanks.html', {root: './client'})
 });
 
+var tempData = [];
 
-app.post('/api/submit', function(req, res) {
-    var data = req.body;
+app.post('/submit', function(req, res) {
     
+    var data = req.body;
 
+    /*
     var fac_sql = "INSERT INTO faculty (FacultyID, First_Name, Last_Name, Email) VALUES ("
-        data.cwid
-        data.name
-        data.name
+        data.cwid,
+        data.name,
+        data.name,
         data.email
     ")";
     var gow_sql = "INSERT INTO gowns (Height, Weight) VALUES ("
-        data.height
+        data.height,
         data.weight
     ")";
     var cap_sql = "INSERT INTO caps (Cap_Size) VALUES ("
 
     ")";
     var col_sql = "INSERT INTO college(College_Name, College_City, College_State) VALUES ("
-        data.college_name
-        data.college_city
+        data.college_name,
+        data.college_city,
         data.college_state
-    ")"
+    ")";
+    
+    config.query(fac_sql, function(err, result) {
+        if (err) throw err;
+    });
+    */
 
-    //con.query(fac_sql, function(err, result) {
-    //    if (err) throw err;
-    //});
+    tempData.push(data);
 
     console.log(data);
-    res.sendFile('thanks.html', {root: './client'})
+    res.redirect('/thanks');
+
 })
-    
-    
+
+app.get('/api/datatable', function(req, res) {
+    res.send(tempData);
+})
 
 app.post('/api/admin/add', function(req, res) {
     var sql = "INSERT INTO admin (Email) VALUES (" + req.body + ")"
