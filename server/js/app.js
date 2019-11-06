@@ -39,8 +39,12 @@ app.get('/form', function(req, res) {
     res.sendFile('regalia_form.html', {root: './client'})
 });
 
-app.post('/api/submit', function(req, res) {
+app.get('/thankyou', function(req, res){
+    res.sendFile('thanks.html', {root: './client'})
+});
 
+
+app.post('/api/submit', function(req, res) {
     var data = req.body;
     
 
@@ -49,11 +53,12 @@ app.post('/api/submit', function(req, res) {
     var cap_sql = "INSERT INTO caps (Cap_Size) VALUES ()"
     var col_sql = "INSERT INTO college(College_Name, College_City, College_State) VALUES () "
 
-    
     //con.query(fac_sql, function(err, result) {
     //    if (err) throw err;
     //});
+
     console.log(data);
+    res.sendFile('thanks.html', {root: './client'})
 })
     
     
