@@ -45,6 +45,7 @@ function submitForm(data) {
     body: data
   })
 
+  //console.log(data);
 
 
   //api.submit(['testy boy', 'the dude', 'mad lad mcgee', 'shannon'])
