@@ -1,4 +1,7 @@
+
 function getData() {
+    document.getElementById("data").hidden = true;
+
     var table = document.getElementById("formData");
 
     fetch('/api/datatable')

@@ -82,9 +82,8 @@ app.post('/submit', function(req, res) {
     tempData.push(data);
 
     console.log(data);
+    res.redirect('/thanks');
 
-    res.sendFile('thanks.html', {root: './client'})
-    
 })
 
 app.get('/api/datatable', function(req, res) {
