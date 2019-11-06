@@ -8,9 +8,9 @@
 </head>
 <body>
     <div id="header">
-        <h1>Marist College</h1>
     </div>
     <br>
+  <div id="mainContent">  
     <div id="selBox">
         <form id="boxContents" method="post" action="/api/submit">
           <p>Name</p>
@@ -51,11 +51,13 @@
           <p>College State</p>
           <input type="text" name="college_state" id="state">
           <br>
-          
-          <button type="submit" id="sub" onclick="submitForm()">Submit</button>
+          <br /> 
+          <div id="but"> 
+            <button type="submit" id="sub" onclick="submitForm()">Submit</button>
+          </div>
           <br>
         </form>
       </div>
-      
+  </div>    
 </body>
 </html>

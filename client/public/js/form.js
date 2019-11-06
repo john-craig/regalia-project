@@ -1,4 +1,4 @@
-var api = require('server/js/api.js');
+//var api = require('server/js/api.js');
 
 var cwid = 0;
 var firstN = "";
@@ -12,15 +12,16 @@ var college = "";
 var city = "";
 var state = "";
 
-function submitForm(data) {
+function submitForm() {
 
+  /*
   cwid = document.getElementById("cwid").innerText;
   firstN, lastN = document.getElementById("name").innerText.toUpperCase().split(" ");
   email = document.getElementById("email").innerText;
-  cap = document.getElementById("cap").innerText;
+  //cap = document.getElementById("cap").innerText;
   height = document.getElementById("height").innerText;
   weight = document.getElementById("weight").innerText;
-  degree = document.getElementById("degree").innerText;
+  //degree = document.getElementById("degree").innerText;
   college = document.getElementById("college").innerText;
   city = document.getElementById("city").innerText;
   state = document.getElementById("state").innerText;
@@ -30,14 +31,15 @@ function submitForm(data) {
     "FirstName": firstN,
     "LastName": lastN,
     "Email": email,
-    "Cap": cap,
+    //"Cap": cap,
     "Height": height,
     "Weight": weight,
-    "Degree": degree,
+    //"Degree": degree,
     "College": college,
     "City": city,
     "State": state
   }
+  */
 
   fetch('/api/submit', {
     method: 'post',
