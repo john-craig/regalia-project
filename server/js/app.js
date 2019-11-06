@@ -39,21 +39,40 @@ app.get('/form', function(req, res) {
     res.sendFile('regalia_form.html', {root: './client'})
 });
 
-app.post('/api/submit', function(req, res) {
+app.get('/thankyou', function(req, res){
+    res.sendFile('thanks.html', {root: './client'})
+});
 
+
+app.post('/api/submit', function(req, res) {
     var data = req.body;
     
 
-    var fac_sql = "INSERT INTO faculty (FacultyID, First_Name, Last_Name, Email) VALUES ()";
-    var gow_sql = "INSERT INTO gowns (Height, Weight) VALUES ()"
-    var cap_sql = "INSERT INTO caps (Cap_Size) VALUES ()"
-    var col_sql = "INSERT INTO college(College_Name, College_City, College_State) VALUES () "
+    var fac_sql = "INSERT INTO faculty (FacultyID, First_Name, Last_Name, Email) VALUES ("
+        data.cwid
+        data.name
+        data.name
+        data.email
+    ")";
+    var gow_sql = "INSERT INTO gowns (Height, Weight) VALUES ("
+        data.height
+        data.weight
+    ")";
+    var cap_sql = "INSERT INTO caps (Cap_Size) VALUES ("
 
-    
+    ")";
+    var col_sql = "INSERT INTO college(College_Name, College_City, College_State) VALUES ("
+        data.college_name
+        data.college_city
+        data.college_state
+    ")"
+
     //con.query(fac_sql, function(err, result) {
     //    if (err) throw err;
     //});
+
     console.log(data);
+    res.sendFile('thanks.html', {root: './client'})
 })
     
     
