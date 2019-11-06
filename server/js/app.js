@@ -53,7 +53,7 @@ app.post('/api/submit', function(req, res) {
     //con.query(fac_sql, function(err, result) {
     //    if (err) throw err;
     //});
-    console.log(req);
+    console.log(data);
 })
     
     
