@@ -11,47 +11,124 @@
     </div>
     <br />
   <div id="mainContent">
-    <img src="images/logo.png">  
+    <img src="images/logo.png"><br />  
     <div id="selBox">
-        <form id="boxContents" method="post" action="/submit">
-          <p>Name</p>
-          <input type="text" name="name" id="name">
-          <br>
+        <form id="boxContents" method="post" action="/submit"><br />
+          <br />
+          <input type="text" name="fname" id="name" placeholder="First Name">
+          <br />
+          <br />
+          <input type="text" name="email" id="email" placeholder="Last Name">
+          <br />
+          <br />
+          <input type="text" name="cwid" id="cwid" placeholder="CWID">
+          <br />
+          <br />
           
-          <p>E-Mail</p>
-          <input type="text" name="email" id="email">
-          <br>
-          
-          <p>CWID</p>
-          <input type="text" name="cwid" id="cwid">
-          <br>
-          
+          <div id="tooltip">
+            <img src="images/info.png" style="height: 17.5px; width: 17.5px" id="icon">
+            <div id="tooltipcontent">
+              <table id="capsizes">
+                <th>Cap Sizing Chart</th>
+                <tr>
+                  <td>Size</td>
+                  <td>Inches (head circumference)</td>
+                </tr>
+                <tr>
+                  <td>5 7/8</td>
+                  <td>18 1/2 - 18 5/8</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>18 3/4 - 19</td>
+                </tr>
+                <tr>
+                  <td>6 1/8</td>
+                  <td>19 1/8 - 19 3/8</td>
+                </tr>
+                <tr>
+                  <td>6 1/4</td>
+                  <td>19 1/2 - 19 3/4</td>
+                </tr>
+                <tr>
+                  <td>6 3/8</td>
+                  <td>19 </td>
+                </tr>
+              </table>
+            </div>
+          </div>
 
-          <!-- <p>Cap Size</p>
+          <label style="opacity: .7">Cap Size</label>
           <select type="text" name="cap_size" id="cap">
-            <option value="x">X</option>
+            <option value="5 7/8">5 7/8</option>
+            <option value="6">6</option>
+            <option value="6 1/8">6 1/8</option>
+            <option value="6 1/4">6 1/4</option>
+            <option value="6 3/8">6 3/8</option>
+            <option value="6 1/2">6 1/2</option>
+            <option value="6 5/8">6 5/8</option>
+            <option value="6 3/4">6 3/4</option>
+            <option value="6 7/8">6 7/8</option>
+            <option value="7">7</option>
+            <option value="7 1/8">7 1/8</option>
+            <option value="7 1/4">7 1/4</option>
+            <option value="7 3/8">7 3/8</option>
+            <option value="7 1/2">7 1/2</option>
+            <option value="7 5/8">7 5/8</option>
+            <option value="7 3/4">7 3/4</option>
+            <option value="7 7/8">7 7/8</option>
+            <option value="8">8</option>
           </select>
-          <br> -->
-          <p>Weight</p>
-          <input type="text" name="weight" id="weight">
-          <br>
-          <p>Height</p>
-          <input type="text" name="height" id="height">
-          <br>
+          <br />
+          <br />
+
+          <input type="text" name="weight" id="weight" placeholder="Weight (lbs)">
+          <br />
+          <br />
+
+          <label style="opacity: .7">Height</label>
+          <select name="heightFeet" id="heightFeet">
+            <option value="1">1'</option>
+            <option value="2">2'</option>
+            <option value="3">3'</option>
+            <option value="4">4'</option>
+            <option value="5">5'</option>
+            <option value="6">6'</option>
+            <option value="7">7'</option>
+            <option value="8">8'</option>
+            <option value="9">9'</option>
+          </select>
+          <select name="heightInches" id="heightFeet">
+            <option value="0">0"</option>
+            <option value="1">1"</option>
+            <option value="2">2"</option>
+            <option value="3">3"</option>
+            <option value="4">4"</option>
+            <option value="5">5"</option>
+            <option value="6">6"</option>
+            <option value="7">7"</option>
+            <option value="8">8"</option>
+            <option value="9">9"</option>
+            <option value="10">10"</option>
+            <option value="11">11"</option>
+          </select>
+          <br />
+          <br />
+
           <!-- <p>Highest Degree</p>
           <select type="text" name="degree" id="degree">
             <option value="x">X</option>
           </select>
           <br> -->
-          <p>College Recieved</p>
-          <input type="text" name="college_name" id="college">
-          <br>
-          <p>College City</p>
-          <input type="text" name="college_city" id="city">
-          <br>
-          <p>College State</p>
-          <input type="text" name="college_state" id="state">
-          <br>
+  
+          <input type="text" name="college_name" id="college" placeholder="College Received">
+          <br />
+          <br />
+          <input type="text" name="college_city" id="city" placeholder="City">
+          <br />
+          <br />
+          <input type="text" name="college_state" id="state" placeholder="State">
+          <br />
           <br /> 
           <div id="but"> 
             <button type="submit" id="sub">Submit</button>
