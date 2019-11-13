@@ -13,12 +13,15 @@
   <div id="mainContent">
     <img src="images/logo.png"><br />  
     <div id="selBox">
-        <form id="boxContents" method="post" action="/submit"><br />
+        <form id="boxContents" method="POST" action="/submit"><br />
           <br />
-          <input type="text" name="fname" id="name" placeholder="First Name">
+          <input type="text" name="fname" id="fname" placeholder="First Name">
           <br />
           <br />
-          <input type="text" name="email" id="email" placeholder="Last Name">
+          <input type="text" name="lname" id="lname" placeholder="Last Name">
+          <br />
+          <br />
+          <input type="text" name="email" id="email" placeholder="Email">
           <br />
           <br />
           <input type="text" name="cwid" id="cwid" placeholder="CWID">
@@ -28,38 +31,91 @@
           <div id="tooltip">
             <img src="images/info.png" style="height: 17.5px; width: 17.5px" id="icon">
             <div id="tooltipcontent">
-              <table id="capsizes">
-                <th>Cap Sizing Chart</th>
+              <table id="capsizes" style="display: flex; flex-direction: column; align-items: center;">
+                <tr>Cap Sizing Chart</tr>
                 <tr>
-                  <td>Size</td>
-                  <td>Inches (head circumference)</td>
+                  <th class="top">Size</td>
+                  <th class="top">Head circumference (inches)</td>
                 </tr>
                 <tr>
-                  <td>5 7/8</td>
-                  <td>18 1/2 - 18 5/8</td>
+                  <td class="capleft">5 7/8</td>
+                  <td class="capright">18 1/2 - 18 5/8</td>
                 </tr>
                 <tr>
-                  <td>6</td>
-                  <td>18 3/4 - 19</td>
+                  <td class="capleft">6</td>
+                  <td class="capright">18 3/4 - 19</td>
                 </tr>
                 <tr>
-                  <td>6 1/8</td>
-                  <td>19 1/8 - 19 3/8</td>
+                  <td class="capleft">6 1/8</td>
+                  <td class="capright">19 1/8 - 19 3/8</td>
                 </tr>
                 <tr>
-                  <td>6 1/4</td>
-                  <td>19 1/2 - 19 3/4</td>
+                  <td class="capleft">6 1/4</td>
+                  <td class="capright">19 1/2 - 19 3/4</td>
                 </tr>
                 <tr>
-                  <td>6 3/8</td>
-                  <td>19 </td>
+                  <td class="capleft">6 3/8</td>
+                  <td class="capright">19 7/8 - 20 1/8</td>
                 </tr>
+                <tr>
+                  <td class="capleft">6 1/2</td>
+                  <td class="capright">20 1/4 - 20 1/2</td>
+                </tr>
+                <tr>
+                  <td class="capleft">6 5/8</td>
+                  <td class="capright">20 5/8 - 20 7/8</td>
+                </tr>
+                <tr>
+                  <td class="capleft">6 3/4</td>
+                  <td class="capright">21 - 21 3/8</td>
+                </tr>
+                <tr>
+                  <td class="capleft">6 7/8</td>
+                  <td class="capright">21 1/2 - 21 3/4</td>
+                </tr>
+                <tr>
+                  <td class="capleft">7</td>
+                  <td class="capright">21 7/8 - 22 1/8</td>
+                </tr>
+                <tr>
+                  <td class="capleft">7 1/8</td>
+                  <td class="capright">22 1/4 - 22 1/2</td>
+                </tr>
+                <tr>
+                  <td class="capleft">7 1/4</td>
+                  <td class="capright">22 5/8 - 227/8</td>
+                </tr>
+                <tr>
+                  <td class="capleft">7 3/8</td>
+                  <td class="capright">23 - 23 1/4</td>
+                </tr>
+                <tr>
+                  <td class="capleft">7 1/2</td>
+                  <td class="capright">23 3/8 - 23 5/8</td>
+                </tr>
+                <tr>
+                  <td class="capleft">7 5/8</td>
+                  <td class="capright">23 3/4 - 24 1/8</td>
+                </tr>
+                <tr>
+                  <td class="capleft">7 3/4</td>
+                  <td class="capright">24 1/4 - 24 1/2</td>
+                </tr>
+                <tr>
+                  <td class="capleft">7 7/8</td>
+                  <td class="capright">24 5/8 - 24 7/8</td>
+                </tr>
+                <tr>
+                  <td class="botleft">8</td>
+                  <td class="botright">25 - 25 1/4</td>
+                </tr>                
               </table>
             </div>
           </div>
 
           <label style="opacity: .7">Cap Size</label>
           <select type="text" name="cap_size" id="cap">
+            <option value="-">-</option>
             <option value="5 7/8">5 7/8</option>
             <option value="6">6</option>
             <option value="6 1/8">6 1/8</option>
@@ -88,6 +144,7 @@
 
           <label style="opacity: .7">Height</label>
           <select name="heightFeet" id="heightFeet">
+            <option value="-">-</option>
             <option value="1">1'</option>
             <option value="2">2'</option>
             <option value="3">3'</option>
@@ -98,7 +155,8 @@
             <option value="8">8'</option>
             <option value="9">9'</option>
           </select>
-          <select name="heightInches" id="heightFeet">
+          <select name="heightInches" id="heightInches">
+            <option value="-">-</option>
             <option value="0">0"</option>
             <option value="1">1"</option>
             <option value="2">2"</option>
@@ -115,11 +173,10 @@
           <br />
           <br />
 
-          <!-- <p>Highest Degree</p>
-          <select type="text" name="degree" id="degree">
-            <option value="x">X</option>
-          </select>
-          <br> -->
+          
+          <input type="text" name="degree" id="degree" placeholder="Degree Earned">
+          <br />  
+          <br />
   
           <input type="text" name="college_name" id="college" placeholder="College Received">
           <br />
