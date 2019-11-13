@@ -5,8 +5,10 @@ const router = express.Router();
 const app = express()
 
 app.use(express.static('client/public'));
-app.use(bodyParser.urlencoded()); 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+  }));
 const port = 5050;
 
 // Set database connection credentials
