@@ -82,7 +82,7 @@ app.post('/submit', function(req, res) {
     tempData.push(data);
 
     console.log(data);
-    res.redirect('/thanks');
+    //res.redirect('/thanks');
 
 })
 
