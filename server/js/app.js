@@ -31,8 +31,18 @@ config.connect ((err) => {
 })
 
 app.get('/', function(req, res) {
-    res.sendFile('index.html', {root: './client'})
+    var ticket = req.param('ticket');
+    if (ticket) {
+        //Ticket validation goes here, or in the JS for the login page
+        res.sendFile('index.html', {root: './client'})
+    } else {
+        res.redirect('/login')
+    }
 });
+
+app.get('/login', function(req, res) {
+    res.sendFile('thanks.html', {root: './client'})
+})
 
 app.get('/admin', function(req, res) {
     res.sendFile('admin.html', {root: './client'})
