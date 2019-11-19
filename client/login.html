@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Marist Regalia Order Page</title>
+
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <script type="text/javascript" src="js/login.js"></script>
+    </head>
+
+<body>
+    <div id="header">
+    </div>
+    <br />
+    <div id="mainContent">
+        <img src="images/logo.png">
+        <div id="selBox">
+            <form id="boxContents" action="api/login" method="POST"><br />    
+                    <h3 id="title">Please enter your credentials</h3>
+                    <div id="buttons">
+                        <input type="text" name="email" id="email" placeholder="john.doe@marist.edu" onclick="unRed('email')"><span class="invalid"></span>
+                        <br />
+                        <br />
+                        <input type="text" name="password" id="password" placeholder="**********" onclick="unRed('password')"><span class="invalid"></span>
+                    </div>
+                    <div id="but">
+                        <button type="button" id="login">Login</button>
+                    </div>
+                    <br />
+            </form>
+        </div>
+    </div>
+</body>
+</html>

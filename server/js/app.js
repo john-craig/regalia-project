@@ -15,6 +15,9 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 
+//Hashing module
+hash = require('object-hash')
+
 app.use(cookieParser('secret'));
 app.use(session({cookie: {maxAge: 9999}}));
 app.use(flash());
@@ -67,7 +70,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/login', function(req, res) {
-    res.sendFile('thanks.html', {root: './client'})
+    res.sendFile('login.html', {root: './client'})
 })
 
 app.get('/admin', function(req, res) {
@@ -169,7 +172,11 @@ app.get('/api/datatable', function(req, res) {
 
 
     
-})
+});
+
+app.post('/api/login', function(req, res) {
+    console.log(req)
+});
 
 app.post('/api/admin/add', function(req, res) {
     var sql = "INSERT INTO admin (Email) VALUES (" + req.body + ")"

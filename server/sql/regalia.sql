@@ -7,6 +7,7 @@ CREATE TABLE faculty (
     First_Name text,
     Last_Name text,
     Email text,
+    Hashed_Pass text,
     PRIMARY KEY (FacultyID)
 );
 
