@@ -109,7 +109,7 @@ input {
     position: absolute;
     z-index: 1;
     top: -200px;
-    right: 300%;
+    right: 2000%;
 }
 
 
@@ -143,3 +143,38 @@ input {
     border-right: none;
     border-bottom: none;
 }
+
+.redbox {
+    border-color: red;
+}
+
+.invalid {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    right: 115%;
+}
+
+.invalidShow {
+    visibility: visible;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    right: 115%;
+}
+
+
+

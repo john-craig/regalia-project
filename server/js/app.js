@@ -11,25 +11,27 @@ const { check , validationResult } = require('express-validator');
 //bodyparser
 const bodyParser = require('body-parser');
 
-//Form session
-const cors = require('cors');
-const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const flash = require('connect-flash');
+
+app.use(cookieParser('secret'));
+app.use(session({cookie: {maxAge: 9999}}));
+app.use(flash());
+
+app.use(function(req,res,next) {
+    res.locals.success = req.flash('success');
+    res.locals.info = req.flash('info');
+    res.locals.error = req.flash('error');
+    res.locals.user = req.user || null;
+    next();
+})
 
 app.use(express.static('client/public'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
-}));
-
-app.use(cors());
-
-app.use(cookieParser());
-app.use(session({
-    secret: 'positronx',
-    saveUninitialized: false,
-    resave: false,
 }));
 
 const port = 5050;
@@ -84,19 +86,37 @@ app.get('/thanks', function(req, res){
     res.sendFile('thanks.html', {root: './client'})
 });
 
+/*
 
-
-app.post('/submit', [
-    check('fname').not().isEmpty().withMessage("First name is required."),
-    chekc('lname').not().isEmpty().withMessage("Last name is required."),
-] , (req, res) => {
-    
+app.post('/submit',/* [
+    check('fname').not().isEmpty().withMessage("First name is required.")
+    .isAlpha().withMessage("Invalid characters in name field."),
+    check('lname').not().isEmpty().withMessage("Last name is required.")
+    .isAlpha().withMessage("Invalid characters in name field."),
+    check('email').isEmail().withMessage("Invalid email."),
+    check('cwid').not().isEmpty().withMessage("CWID is required.")
+    .isInt().withMessage("Please enter a valid CWID."),
+    check('weight').isInt().withMessage("Please enter a valid weight value (lbs)."),
+    check('college_name').not().isEmpty().withMessage("College name is requried.")
+    .isAlphanumeric().withMessage("Invalid characters in name field."),
+    check('college_city').not().isEmpty().withMessage("College city is required.")
+    .isAlpha().withMessage("Invalid characters in city field."),
+    check('college_state').not().isEmpty().withMessage("College state is required.")
+    .isAlpha().withMessage("Invalid characters in state field.")
+] ,function (req, res)  {
+    /*
     const errors = validationResult(req);
+
     if(!errors.isEmpty()) {
-        return res.status(422).json({errors: errors.array()});
+        //return res.status(422).json({errors: errors.array()});
+        req.flash('error', "invalid form");
+        res.redirect('/form');
+        
+        return;
     }
 
     var data = req.body;
+    console.log(data);
 
     //Faculty table
     config.query("INSERT INTO faculty (FacultyID, First_Name, Last_Name, Email) VALUES ('" + data.cwid + "', '" + data.fname + "', '" + data.lname + "', '" + data.email + "')", function(err, res) {
@@ -132,6 +152,8 @@ app.post('/submit', [
 
 })
 
+*/
+
 app.get('/api/datatable', function(req, res) {
     //res.send(tempData);
 
@@ -143,7 +165,6 @@ app.get('/api/datatable', function(req, res) {
             return;
         }
         res.send(data)
-        console.log(data[0]);
     })
 
 
