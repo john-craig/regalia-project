@@ -13,18 +13,18 @@
   <div id="mainContent">
     <img src="images/logo.png"><br />  
     <div id="selBox">
-        <form id="boxContents" method="POST" action="/submit"><br />
+        <form id="boxContents" onsubmit="event.preventDefault(); validateForm()"><br />
           <br />
-          <input type="text" name="fname" id="fname" placeholder="First Name">
-          <br />
-          <br />
-          <input type="text" name="lname" id="lname" placeholder="Last Name">
+          <input type="text" name="fname" id="fname" placeholder="First Name" onclick="unRed('fname')"><span class="invalid"></span>
           <br />
           <br />
-          <input type="text" name="email" id="email" placeholder="Email">
+          <input type="text" name="lname" id="lname" placeholder="Last Name" onclick="unRed('lname')">
           <br />
           <br />
-          <input type="text" name="cwid" id="cwid" placeholder="CWID">
+          <input type="text" name="email" id="email" placeholder="Email" onclick="unRed('email')">
+          <br />
+          <br />
+          <input type="text" name="cwid" id="cwid" placeholder="CWID" onclick="unRed('cwid')">
           <br />
           <br />
           
@@ -138,7 +138,7 @@
           <br />
           <br />
 
-          <input type="text" name="weight" id="weight" placeholder="Weight (lbs)">
+          <input type="text" name="weight" id="weight" placeholder="Weight (lbs)" onclick="unRed('weight')">
           <br />
           <br />
 
@@ -174,17 +174,17 @@
           <br />
 
           
-          <input type="text" name="degree" id="degree" placeholder="Degree Earned">
+          <!-- <input type="text" name="degree" id="degree" placeholder="Degree Earned">
           <br />  
-          <br />
+          <br /> -->
   
-          <input type="text" name="college_name" id="college" placeholder="College Received">
+          <input type="text" name="college_name" id="college" placeholder="College Received" onclick="unRed('college')">
           <br />
           <br />
-          <input type="text" name="college_city" id="city" placeholder="City">
+          <input type="text" name="college_city" id="city" placeholder="City" onclick="unRed('city')">
           <br />
           <br />
-          <input type="text" name="college_state" id="state" placeholder="State">
+          <input type="text" name="college_state" id="state" placeholder="State" onclick="unRed('state')">
           <br />
           <br /> 
           <div id="but"> 
