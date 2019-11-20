@@ -174,14 +174,23 @@ app.get('/api/datatable', function(req, res) {
     
 });
 
-app.post('/api/login', function(req, res) {
-    console.log(req)
+app.post('/login', function(req, res) {
+    //console.log(req.body)
+
+    var email = req.body.email
+    var hashed_pass = hash(req.body.password)
+
+    var sql = "INSERT INTO faculty (Email, Hashed_Pass) VALUES (" + email + ", " + hashed_pass + ")"
+
+    config.query(sql, function(err, result) {
+        if (err) throw err;
+    })
 });
 
 app.post('/api/admin/add', function(req, res) {
     var sql = "INSERT INTO admin (Email) VALUES (" + req.body + ")"
 
-    con.query(sql, function(err, result) {
+    config.query(sql, function(err, result) {
         if (err) throw err;
     })
     console.log(req)
