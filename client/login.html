@@ -14,7 +14,7 @@
     <div id="mainContent">
         <img src="images/logo.png">
         <div id="selBox">
-            <form id="boxContents" action="api/login" method="POST"><br />    
+            <form id="boxContents" action="/login" method="post"><br />    
                     <h3 id="title">Please enter your credentials</h3>
                     <div id="buttons">
                         <input type="text" name="email" id="email" placeholder="john.doe@marist.edu" onclick="unRed('email')"><span class="invalid"></span>
@@ -22,9 +22,9 @@
                         <br />
                         <input type="text" name="password" id="password" placeholder="**********" onclick="unRed('password')"><span class="invalid"></span>
                     </div>
-                    <div id="but">
-                        <button type="button" id="login">Login</button>
-                    </div>
+                    <div id="but"> 
+                        <button type="submit" id="sub">Login</button>
+                      </div>
                     <br />
             </form>
         </div>
