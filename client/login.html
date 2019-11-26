@@ -3,7 +3,7 @@
     <head>
         <title>Marist Regalia Order Page</title>
 
-        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="/css/index.css">
         <script type="text/javascript" src="js/login.js"></script>
     </head>
 
@@ -17,6 +17,9 @@
             <form id="boxContents" action="/login" method="post"><br />    
                     <h3 id="title">Please enter your credentials</h3>
                     <div id="buttons">
+                        <input type="text" name="fac_id" id="fac_id" placeholder="XXX-XX-XXX" onclick="unRed('fac_id')"><span class="invalid"></span>
+                        <br />
+                        <br />
                         <input type="text" name="email" id="email" placeholder="john.doe@marist.edu" onclick="unRed('email')"><span class="invalid"></span>
                         <br />
                         <br />

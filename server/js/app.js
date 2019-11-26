@@ -2,6 +2,8 @@
 const express = require('express');
 const app = express();
 
+const port = process.env.PORT || 5050;
+
 //MySQL
 const mysql = require('mysql');
 
@@ -11,7 +13,9 @@ const { check , validationResult } = require('express-validator');
 //bodyparser
 const bodyParser = require('body-parser');
 
-const session = require('express-session');
+//Authentication
+ 
+//const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 
@@ -19,7 +23,7 @@ const flash = require('connect-flash');
 hash = require('object-hash')
 
 app.use(cookieParser('secret'));
-app.use(session({cookie: {maxAge: 9999}}));
+//app.use(session({cookie: {maxAge: 9999}}));
 app.use(flash());
 
 app.use(function(req,res,next) {
@@ -30,14 +34,15 @@ app.use(function(req,res,next) {
     next();
 })
 
-app.use(express.static('client/public'));
+app.use(express.static('./client/public'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-const port = 5050;
+//Routes
+app.use('/', require('./routes/index'));
 
 // Set database connection credentials
 const config = mysql.createConnection ({
@@ -48,19 +53,16 @@ const config = mysql.createConnection ({
     multipleStatements: true,
 });
 
-// Create a MySQL pool
-//const pool = mysql.createPool(config);
-//module.exports = pool;
-
-//const pool = require('../data/config');
-
 config.connect ((err) => {
     if(err) console.log(err);
     console.log("Database connected!");
 })
 
+/*
 app.get('/', function(req, res) {
-    var ticket = req.param('ticket');
+    console.log(req.body)
+
+    var ticket = req.ticket
     if (ticket) {
         //Ticket validation goes here, or in the JS for the login page
         res.sendFile('index.html', {root: './client'})
@@ -68,26 +70,12 @@ app.get('/', function(req, res) {
         res.redirect('/login')
     }
 });
-
-app.get('/login', function(req, res) {
-    res.sendFile('login.html', {root: './client'})
-})
-
-app.get('/admin', function(req, res) {
-    res.sendFile('admin.html', {root: './client'})
-});
-
-app.get('/form', function(req, res) {
-    res.sendFile('regalia_form.html', {root: './client'})
-});
+*/
 
 app.get('/datatable', function(req, res) {
     res.sendFile('datatable.html', {root: './client'})
 });
 
-app.get('/thanks', function(req, res){
-    res.sendFile('thanks.html', {root: './client'})
-});
 
 /*
 
@@ -177,14 +165,20 @@ app.get('/api/datatable', function(req, res) {
 app.post('/login', function(req, res) {
     //console.log(req.body)
 
+    var fac_id = req.body.fac_id
     var email = req.body.email
     var hashed_pass = hash(req.body.password)
 
-    var sql = "INSERT INTO faculty (Email, Hashed_Pass) VALUES (" + email + ", " + hashed_pass + ")"
+    var sql = "INSERT INTO faculty (FacultyID, Email, Hashed_Pass) VALUES ('" + fac_id + "', '" + email + "', '" + hashed_pass + "')"
 
     config.query(sql, function(err, result) {
         if (err) throw err;
     })
+
+    console.log(sql)
+    res.append('ticket', email)
+    console.log(res)
+    res.redirect('/');
 });
 
 app.post('/api/admin/add', function(req, res) {

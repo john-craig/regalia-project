@@ -27,18 +27,18 @@ function validateForm() {
 
   var alpha = new RegExp("[a-zA-Z]");
   var num = new RegExp("[0-9]");
-  var lbs = new RegExp("[0-9 ]");
+  var lbs = new RegExp("[\x00]");
   var mail = new RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$");
 
   var fname = document.getElementById("fname").value.trim();
   var lname = document.getElementById("lname").value.trim();
   var email = document.getElementById("email").value.trim();
-  var cwid = document.getElementById("cwid").value;
+  var cwid = document.getElementById("cwid").value.trim();
   var capsize = document.getElementById("cap").value;
-  var weight = document.getElementById("weight").value.trim();
+  var weight = document.getElementById("weight").value;
   var heightFeet = document.getElementById("heightFeet").value;
   var heightInches = document.getElementById("heightInches").value;
-  //var degree = document.getElementById("degree").innerText;
+  var degree = document.getElementById("degree").value.trim();
   var college = document.getElementById("college").value.trim();
   var city = document.getElementById("city").value.trim();
   var state = document.getElementById("state").value.trim();
@@ -57,7 +57,7 @@ function validateForm() {
     document.getElementById("lname").classList.add('redbox');
   }
 
-  if(!mail.test(email)) {
+  if(!mail.test(email) || !email.includes("@marist.edu")) {
     invalid = true;
     errors.push("Invalid field: Email");
     document.getElementById("email").classList.add('redbox');
@@ -69,7 +69,7 @@ function validateForm() {
     document.getElementById("cwid").classList.add('redbox');
   }
 
-  if(!lbs.test(weight)) {
+  if(!num.test(weight) && weight != "") {
     invalid = true;
     errors.push("Invalid field: Weight");
     document.getElementById("weight").classList.add('redbox');
@@ -100,13 +100,46 @@ function validateForm() {
   } 
   else {
 
-    if(capsize == "-") {
+    if(capsize == "-" && weight == "" && heightFeet == "-" && heightInches == "-") {
+      alert("Please either enter a cap size or a height and weight.");
+      return false;
+    }
+  
+    if(weight == "" && heightFeet == "-" && heightInches == "-" && capsize != "-") {
+      if(confirm("No selection made for height and weight (only ordering cap). Is this correct? (This choice can be updated.)")) {
+        alert("Valid form.");
+      } else {
+        return false;
+      }
+    } 
+    
+    if(weight != "" && heightFeet != "-" && heightInches != "-" && capsize == "-") {
       if(confirm("No selection for cap size (only ordering gown). Is this correct? (This choice can be updated.)")) {
         alert("Valid form.");
       } else {
         return false;
       }
     }
+
+    if (weight == "" && heightFeet != "-" && heightInches != "-") {
+      alert("Please enter your weight.");
+      return false;
+    } 
+    if (weight != "" && heightFeet == "-" && heightInches == "-") {
+      alert("Please enter a valid height.");
+      return false;
+    } 
+
+    if(heightFeet == "-" && heightInches != "-") {
+      alert("Please enter a valid height.");
+      return false;
+    }
+
+    if(heightFeet != "-" && heightInches == "-") {
+      alert("Please enter a valid height.");
+      return false;
+    }
+    
   } 
 
 
