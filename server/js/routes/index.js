@@ -19,7 +19,7 @@ const config = mysql.createConnection ({
 
 //Page routes
 //Index (redirects to login page)
-router.get('/', forwardAuthenticated, (req, res) => res.sendFile('login.html', {root: './client'}));
+router.get('/', forwardAuthenticated, (req, res) => res.sendFile('index.html', {root: './client'}));
 
 //Login
 router.get('/login', forwardAuthenticated, (req, res) => res.sendFile('login.html', {root: './client'}));
@@ -88,7 +88,7 @@ router.post('/registerSubmit', (req, res) => {
 //Login handler
 router.post('/loginSubmit', (req, res, next) => {
     passport.authenticate('local', {
-        successRedirect: '/u/form',
+        successRedirect: '/',
         failureRedirect: '/login'   
     })(req, res, next);
 });
