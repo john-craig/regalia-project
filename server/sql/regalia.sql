@@ -32,6 +32,11 @@ CREATE TABLE admins (
     PRIMARY KEY (AdminID)
 );
 
+CREATE TABLE secrets (
+    Secret_Code text NOT NULL,
+    PRIMARY KEY (Secret_Code)
+);
+
 
 
 
