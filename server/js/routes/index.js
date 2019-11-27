@@ -19,7 +19,7 @@ const config = mysql.createConnection ({
 
 //Page routes
 //Index (redirects to login page)
-router.get('/', forwardAuthenticated, (req, res) => res.sendFile('index.html', {root: './client'}));
+router.get('/', forwardAuthenticated, (req, res) => res.sendFile('login.html', {root: './client'}));
 
 //Login
 router.get('/login', forwardAuthenticated, (req, res) => res.sendFile('login.html', {root: './client'}));
@@ -40,10 +40,18 @@ router.get('/thanks', forwardAuthenticated, (req, res) => res.sendFile('thanks.h
 router.post('/registerSubmit', (req, res) => {
     var data = req.body;
     var id = data.id;
-    var first = data.name.split(" ")[0];
-    var last = data.name.split(" ")[1];
+    //var first = data.name.split(" ")[0];
+    //var last = data.name.split(" ")[1];
     var email = data.email;
     var pass = data.password;
+
+    //Note -- this assumes that the email will not have numeric characters before the '@' sign
+    var first = email.split("@")[0].split(".")[0]
+    var last = email.split("@")[0].split(".")[1]
+
+    var secret = data.secret
+
+    console.log(secret)
       
     //Check for existing user
     config.query("SELECT COUNT(Email) FROM users WHERE Email =  + '" + data.email + "'", (err, row) => {
