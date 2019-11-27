@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Marist Regalia Order Page</title>
+
+        <link rel="stylesheet" type="text/css" href="/css/index.css">
+        <script type="text/javascript" src="js/register.js"></script>
+    </head>
+
+<body>
+    <div id="header">
+    </div>
+    <br />
+    <div id="mainContent">
+        <img src="images/logo.png">
+        <div id="selBox">
+            <form id="boxContents" action="/registerSubmit" method="post"><br />    
+                    <h3 id="title">Please enter your information.</h3>
+                    <div id="buttons">
+                        <input type="text" name="name" id="name" placeholder="Name" onclick="unRed('name')"><span class="invalid"></span>
+                        <br />
+                        <br />
+                        <input type="text" name="email" id="email" placeholder="Email" onclick="unRed('email')"><span class="invalid"></span>
+                        <br />
+                        <br />
+                        <input type="text" name="id" id="id" placeholder="CWID" onclick="unRed('id')"><span class="invalid"></span>
+                        <br />
+                        <br />
+                        <input type="text" name="password" id="password" placeholder="Password" onclick="unRed('password')"><span class="invalid"></span>
+                        <br />
+                        <br />
+                        <input type="text" name="password2" id="password2" placeholder="Confirm Password" onclick="unRed('password')"><span class="invalid"></span>
+                    </div>
+                    <div id="but"> 
+                        <button type="submit" id="sub">Login</button>
+                      </div>
+                    <br />
+            </form>
+        </div>
+    </div>
+</body>
+</html>

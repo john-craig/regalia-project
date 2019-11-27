@@ -10,22 +10,22 @@ const mysql = require('mysql');
 //Validator
 const { check , validationResult } = require('express-validator');
 
-//bodyparser
-const bodyParser = require('body-parser');
+
+
 
 //Authentication
  
 //const session = require('express-session');
-const cookieParser = require('cookie-parser');
-const flash = require('connect-flash');
+//const cookieParser = require('cookie-parser');
+//const flash = require('flash');
 
 //Hashing module
 hash = require('object-hash')
 
-app.use(cookieParser('secret'));
-//app.use(session({cookie: {maxAge: 9999}}));
-app.use(flash());
-
+//app.use(cookieParser('secret'));
+//app.use(session());
+//app.use(flash());
+/*
 app.use(function(req,res,next) {
     res.locals.success = req.flash('success');
     res.locals.info = req.flash('info');
@@ -33,12 +33,13 @@ app.use(function(req,res,next) {
     res.locals.user = req.user || null;
     next();
 })
-
+*/
 app.use(express.static('./client/public'));
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
+//BodyParser
+//app.use(express.json());
+app.use(express.urlencoded({
+    extended: false
 }));
 
 //Routes
@@ -58,6 +59,8 @@ config.connect ((err) => {
     console.log("Database connected!");
 })
 
+module.exports.config = config;
+
 /*
 app.get('/', function(req, res) {
     console.log(req.body)
@@ -75,7 +78,6 @@ app.get('/', function(req, res) {
 app.get('/datatable', function(req, res) {
     res.sendFile('datatable.html', {root: './client'})
 });
-
 
 /*
 
