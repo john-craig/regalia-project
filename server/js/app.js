@@ -1,6 +1,11 @@
 //Express
 const express = require('express');
 const app = express();
+//const flash = require('connect-flash'); 
+const session = require('express-session');
+const passport = require('passport');
+
+require('./passport')(passport);
 
 const port = process.env.PORT || 5050;
 
@@ -10,40 +15,39 @@ const mysql = require('mysql');
 //Validator
 const { check , validationResult } = require('express-validator');
 
-
-
-
-//Authentication
- 
-//const session = require('express-session');
-//const cookieParser = require('cookie-parser');
-//const flash = require('flash');
-
-//Hashing module
-hash = require('object-hash')
-
-//app.use(cookieParser('secret'));
-//app.use(session());
-//app.use(flash());
-/*
-app.use(function(req,res,next) {
-    res.locals.success = req.flash('success');
-    res.locals.info = req.flash('info');
-    res.locals.error = req.flash('error');
-    res.locals.user = req.user || null;
-    next();
-})
-*/
 app.use(express.static('./client/public'));
 
 //BodyParser
-//app.use(express.json());
 app.use(express.urlencoded({
     extended: false
 }));
 
+//Express session
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}));
+
+//Passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+/*
+//Connect flash
+app.use(flash());
+
+//Globals
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error = req.flash('error_msg');
+    next();
+});
+*/
+
 //Routes
 app.use('/', require('./routes/index'));
+app.use('/u', require('./routes/users'));
 
 // Set database connection credentials
 const config = mysql.createConnection ({
@@ -58,22 +62,6 @@ config.connect ((err) => {
     if(err) console.log(err);
     console.log("Database connected!");
 })
-
-module.exports.config = config;
-
-/*
-app.get('/', function(req, res) {
-    console.log(req.body)
-
-    var ticket = req.ticket
-    if (ticket) {
-        //Ticket validation goes here, or in the JS for the login page
-        res.sendFile('index.html', {root: './client'})
-    } else {
-        res.redirect('/login')
-    }
-});
-*/
 
 app.get('/datatable', function(req, res) {
     res.sendFile('datatable.html', {root: './client'})
