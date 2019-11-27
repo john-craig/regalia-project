@@ -27,6 +27,15 @@ router.get('/login', forwardAuthenticated, (req, res) => res.sendFile('login.htm
 //Register
 router.get('/register', forwardAuthenticated, (req, res) => res.sendFile('register.html', {root: './client'}));
 
+//Form page
+router.get('/form', forwardAuthenticated, (req, res) => res.sendFile('regalia_form.html', {root: './client'}));
+
+//Admin page
+router.get('/admin', forwardAuthenticated, (req, res) => res.sendFile('admin.html', {root: './client'}));
+
+//Thank you page
+router.get('/thanks', forwardAuthenticated, (req, res) => res.sendFile('thanks.html', {root: './client'}));
+
 //Registration handler
 router.post('/registerSubmit', (req, res) => {
     var data = req.body;
