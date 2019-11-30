@@ -51,9 +51,24 @@ router.post('/registerSubmit', (req, res) => {
 
     var secret = data.secret
 
+    config.query("SELECT Secret_Code FROM secrets ORDER BY Date_Set DESC LIMIT 1", (err, row) => {
+        if(err) throw (err);
+
+        console.log("Newest:")
+        console.log(row)
+    })
+
+    config.query("SELECT Secret_Code FROM secrets ORDER BY Date_Set ASC LIMIT 1", (err, row) => {
+        if(err) throw (err);
+
+        console.log("Oldest:")
+        console.log(row)
+    })
+
     console.log(secret)
       
     //Check for existing user
+    /*
     config.query("SELECT COUNT(Email) FROM users WHERE Email =  + '" + data.email + "'", (err, row) => {
         if(err) throw (err);
         
@@ -92,7 +107,7 @@ router.post('/registerSubmit', (req, res) => {
         }
         
     })
-
+    */
 });
 
 //Login handler
@@ -104,6 +119,7 @@ router.post('/loginSubmit', (req, res, next) => {
 });
 
 router.post('/changeSecret', (req, res) => {
+    //User should be validated as an administrator too-- but I'll work on that later
 
     config.query("INSERT INTO secrets (Secret_Code) VALUES ('" + req.body.passcode + "')", (err, res) => {
         if(err) throw err;

@@ -8,6 +8,7 @@ CREATE TABLE users (
     First_Name text NOT NULL,
     Last_Name text NOT NULL,
     Hashed_Pass text NOT NULL,
+    IsAdmin boolean NOT NULL DEFAULT False,
     PRIMARY KEY (ID)	
 );
 
@@ -33,7 +34,7 @@ CREATE TABLE admins (
 );
 
 CREATE TABLE secrets (
-    Date_Set date NOT NULL DEFAULT GETDATE(),
+    Date_Set TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     Secret_Code text NOT NULL,
     PRIMARY KEY (Date_Set)
 );
