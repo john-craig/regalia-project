@@ -31,7 +31,7 @@ router.get('/register', forwardAuthenticated, (req, res) => res.sendFile('regist
 router.get('/form', forwardAuthenticated, (req, res) => res.sendFile('regalia_form.html', {root: './client'}));
 
 //Admin page
-router.get('/admin', forwardAuthenticated, (req, res) => res.sendFile('admin.html', {root: './client'}));
+router.get('/admin', adminAuthenticated, (req, res) => res.sendFile('admin.html', {root: './client'}));
 
 //Thank you page
 router.get('/thanks', forwardAuthenticated, (req, res) => res.sendFile('thanks.html', {root: './client'}));
@@ -148,7 +148,7 @@ router.post('/loginSubmit', (req, res, next) => {
     })(req, res, next);
 });
 
-router.post('/changeSecret', (req, res) => {
+router.post('/changeSecret', adminAuthenticated, (req, res) => {
     //User should be validated as an administrator too-- but I'll work on that later
 
     config.query("INSERT INTO secrets (Secret_Code) VALUES ('" + req.body.passcode + "')", (err, res) => {

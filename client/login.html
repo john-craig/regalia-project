@@ -14,7 +14,11 @@
     <div id="mainContent">
         <img src="images/logo.png">
         <div id="selBox">
-            <form id="boxContents" action="/loginSubmit" method="post"><br />    
+                <form id="boxContents" action="/loginSubmit" method="post"><br />
+                <!-- Right now the above line calls the /loginSubmit route in index.js, but it needs to be able to do the prevent default-->
+                <!-- validation like the one in the regalia form. I know it will probably look something like the line below-->
+                <!-- <form id="boxContents" onsubmit="event.preventDefault(); validateLogin()" action="/loginSubmit" method="post"> -->
+                    <br />
                     <h3 id="title">Please enter your credentials</h3>
                     <div id="buttons">
                         <input type="text" name="email" id="email" placeholder="Email" onclick="unRed('email')"><span class="invalid"></span>
@@ -26,6 +30,8 @@
                         <button type="submit" id="sub">Login</button>
                       </div>
                     <br />
+                    <br />
+                    <a href="register">Register Here</a>
             </form>
         </div>
     </div>

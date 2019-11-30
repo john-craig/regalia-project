@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Marist Regalia Order Page</title>
-
+        <script type="text/javascript" src="js/register.js"></script>
         <link rel="stylesheet" type="text/css" href="/css/index.css">
     </head>
 
@@ -13,7 +13,9 @@
     <div id="mainContent">
         <img src="images/logo.png">
         <div id="selBox">
-            <form id="boxContents" action="/registerSubmit" method="post"><br />    
+                <form id="boxContents" action="/loginSubmit" method="post"><br />
+                <!-- See comment on login.html page-->
+                <!--<form id="boxContents" onsubmit="event.preventDefault(); validateRegister()" action="/loginSubmit" method="post"><br />-->
                     <h3 id="title">Please enter the following information.</h3>
                     <div id="buttons">
                         <p>Campus-Wide ID</p>
@@ -39,6 +41,7 @@
                         <button type="submit" id="sub">Register</button>
                       </div>
                     <br />
+                    
             </form>
         </div>
     </div>
