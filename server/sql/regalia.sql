@@ -33,7 +33,7 @@ CREATE TABLE admins (
 );
 
 CREATE TABLE secrets (
-    Date_Set date NOT NULL,
+    Date_Set date NOT NULL DEFAULT GETDATE(),
     Secret_Code text NOT NULL,
     PRIMARY KEY (Date_Set)
 );

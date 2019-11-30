@@ -13,8 +13,7 @@
     <br />
     <div id="mainContent">
         <img src="images/logo.png">
-        <div id="selBox">
-            <form id="boxContents">     
+        <div id="selBox">     
                     <h3 id="title">Adminstrator Options:</h3>
                     <br />
                         <table id="formData">
@@ -33,18 +32,21 @@
                         <button id="sub" type="button" onclick="getData()">Get Data</button>   <button id="sub" type="button" onclick="">Download</button>
                         <br /> 
                         <br />
+
+                        <form id="boxContents" action="/changeSecret" method="post">
                         <p>Change site passcode</p>
                         <br />
                         <input type="text" name="passcode" id="passcode" placeholder="" onclick="unRed('passcode')"><span class="invalid"></span>
                         <br />
-                        <button type="button" onclick="" id="sub">Change</button>
+                        <button type="submit" onclick="" id="sub">Change</button>
+                        </form>
+
                         <br />
                         <p>Add new administrator</p>
                         <input type="text" name="email" id="admin_email" placeholder="Email" onclick="unRed('email')"><span class="invalid"></span>
                         <br />
-                        <button type="button" onclick="" id="sub">Set</button>
+                        <button type="submit" onclick="" id="sub">Set</button>
                         
-                </form>
         </div>
     </div>
 </body>

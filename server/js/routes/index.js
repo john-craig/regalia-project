@@ -65,6 +65,8 @@ router.post('/registerSubmit', (req, res) => {
             res.sendFile('register.html', {root: './client'});
 
         } else {
+            //config.query("SELECT")
+
             //Create new user
             var newUser = User.newUser(
                 id,
@@ -99,6 +101,15 @@ router.post('/loginSubmit', (req, res, next) => {
         successRedirect: '/',
         failureRedirect: '/login'   
     })(req, res, next);
+});
+
+router.post('/changeSecret', (req, res) => {
+
+    config.query("INSERT INTO secrets (Secret_Code) VALUES ('" + req.body.passcode + "')", (err, res) => {
+        if(err) throw err;
+    });
+
+    res.redirect('/')
 });
 
 module.exports = router;
