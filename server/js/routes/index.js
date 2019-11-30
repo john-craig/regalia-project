@@ -7,6 +7,7 @@ const passport = require('passport');
 const User = require('../models/User');
 
 const { forwardAuthenticated } = require('../auth');
+const { adminAuthenticated } = require('../auth');
 
 // Set database connection credentials
 const config = mysql.createConnection ({
