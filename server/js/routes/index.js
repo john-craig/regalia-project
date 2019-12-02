@@ -28,10 +28,14 @@ router.get('/login', forwardAuthenticated, (req, res) => res.sendFile('login.htm
 //Register
 router.get('/register', forwardAuthenticated, (req, res) => res.sendFile('register.html', {root: './client'}));
 
+//Admin
+router.get('/admin', forwardAuthenticated, (req, res) => res.sendFile('admin.html', {root: './client'}));
+
 //Registration handler
 router.post('/registerSubmit', (req, res) => {
     var data = req.body;
     //console.log(data);
+
     var id = data.id;
     //var first = data.name.split(" ")[0];
     //var last = data.name.split(" ")[1];
@@ -82,8 +86,11 @@ router.post('/registerSubmit', (req, res) => {
             if(admin_code == secret){
                 IsAdmin = 1;
                 canCreate = true;
-            } 
-            
+            }
+
+            console.log("Can create")
+            console.log(canCreate)
+
             if(canCreate) {
                 config.query("SELECT COUNT(Email) FROM users WHERE Email =  + '" + data.email + "'", (err, row) => {
                     if(err) throw (err);
@@ -125,6 +132,9 @@ router.post('/registerSubmit', (req, res) => {
                     }
                     
                 })
+            } else {
+                res.redirect('/register');
+                //alert("Incorrect event code")
             }
         })
     })
@@ -138,6 +148,8 @@ router.post('/registerSubmit', (req, res) => {
 
 //Login handler
 router.post('/loginSubmit', (req, res, next) => {
+    console.log(req.body)
+
     passport.authenticate('local', {
         successRedirect: '/u/dashboard',
         failureRedirect: '/login'   

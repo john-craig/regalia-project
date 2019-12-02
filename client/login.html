@@ -14,10 +14,7 @@
     <div id="mainContent">
         <img src="images/logo.png" style="margin:10px;">
         <div id="selBox">
-                <form id="boxContents" onsubmit="validateLogin();" action="/loginSubmit" method="post"><br />
-                <!-- Right now the above line calls the /loginSubmit route in index.js, but it needs to be able to do the prevent default-->
-                <!-- validation like the one in the regalia form. I know it will probably look something like the line below-->
-                <!-- <form id="boxContents" onsubmit="event.preventDefault(); validateLogin()" action="/loginSubmit" method="post"> -->
+                <form id="boxContents" onsubmit="validateLogin()" action="/loginSubmit" method="post"><br />
                     <div id="userError">
                         <p>No existing account associated with that email. Try again.</p>
                     </div>

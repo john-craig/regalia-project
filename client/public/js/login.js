@@ -1,4 +1,5 @@
 function validateLogin() {
+    console.log("FAS")
     
     var invalid = false;
 
@@ -16,15 +17,12 @@ function validateLogin() {
         console.log(data.data);
         if(data.data == 0) {
             invalid = true;
+            console.log(invalid);  
         }
+        
     });
 
-    if(invalid) {
-        document.getElementById('userError').style.visibility = "visible";
-        event.preventDefault();
-        return false;
-    }
-
+    return true;
 }
 
 function unRed(box) {
