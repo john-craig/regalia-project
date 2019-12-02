@@ -34,18 +34,32 @@
                         <br />
 
                         <form id="boxContents" action="/changeSecret" method="post">
-                        <p>Change site passcode</p>
-                        <br />
-                        <input type="text" name="passcode" id="passcode" placeholder="" onclick="unRed('passcode')"><span class="invalid"></span>
-                        <br />
-                        <button type="submit" onclick="" id="sub">Change</button>
+                            <p>Change site passcode</p>
+                            <br />
+                            <input type="text" name="passcode" id="passcode" placeholder="" onclick="unRed('passcode')"><span class="invalid"></span>
+                            <br />
+                            <button type="submit" onclick="" id="sub">Change</button>
                         </form>
 
                         <br />
+                        <br />
+
+                        <form id="boxContents" action="/promoteAdmin" method="post">
                         <p>Add new administrator</p>
-                        <input type="text" name="email" id="admin_email" placeholder="Email" onclick="unRed('email')"><span class="invalid"></span>
+                        <input type="text" name="email" id="email" placeholder="Email" onclick="unRed('email')"><span class="invalid"></span>
                         <br />
                         <button type="submit" onclick="" id="sub">Set</button>
+                        </form>
+
+                        <br />
+                        <br />
+
+                        <form id="boxContents" action="/revokeUser" method="post">
+                        <p>Revoke a user's access</p>
+                        <input type="text" name="email" id="email" placeholder="Email" onclick="unRed('email')"><span class="invalid"></span>
+                        <br />
+                        <button type="submit" onclick="" id="sub">Set</button>
+                        </form>
 
                         
                         

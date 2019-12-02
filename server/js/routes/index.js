@@ -159,11 +159,34 @@ router.post('/loginSubmit', (req, res, next) => {
 router.post('/usercheck/:email', (req, res) => {
     var email = req.params.email;
     //console.log(email);
-    config.query("SELECT COUNT(Email) FROM users WHERE Email =  + '" + email + "'", (err, row) => {
+    config.query("SELECT COUNT(Email) FROM users WHERE Email = '" + email + "'", (err, row) => {
         if(err) throw (err);
         var count = row[0]['COUNT(Email)'];
         res.send({data: count});
     });
+});
+
+router.post('/promoteAdmin', adminAuthenticated, (req, res) => {
+    var data = req.body
+    var email = data.email
+
+    config.query("UPDATE users SET IsAdmin = 1 WHERE Email = '" + email + "'", (err, row) => {
+        if(err) throw (err);
+    });
+
+    res.redirect('/admin')
+});
+
+router.post('/revokeUser', adminAuthenticated, (req, res) => {
+    var data = req.body
+    var email = data.email
+
+    config.query("DELETE FROM users WHERE Email = '" + email + "'", (err, row) => {
+        if(err) throw (err);
+        res.send('/')
+    });
+
+    res.redirect('/admin')
 });
 
 router.post('/changeSecret', adminAuthenticated, (req, res) => {
@@ -173,7 +196,7 @@ router.post('/changeSecret', adminAuthenticated, (req, res) => {
         if(err) throw err;
     });
 
-    res.redirect('/')
+    res.redirect('/admin')
 });
 
 module.exports = router;

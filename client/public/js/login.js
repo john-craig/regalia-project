@@ -1,6 +1,4 @@
 function validateLogin() {
-    console.log("FAS")
-    
     var invalid = false;
 
     var email = document.getElementById('email').value;

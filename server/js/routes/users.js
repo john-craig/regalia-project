@@ -24,6 +24,8 @@ router.get('/thanks', ensureAuthenticated, (req, res) =>
     res.sendFile('thanks.html', {root: './client'}));
 
 router.post('/submitForm', (req, res) => {
+    console.log(req.body)
+    console.log(req.user)
 
     var formData = req.body;
     var userData = req.user;

@@ -24,7 +24,8 @@ CREATE TABLE orders (
     College_City text NOT NULL,
     College_State text NOT NULL,
     PRIMARY KEY (OrderID),
-    FOREIGN KEY (UserID) REFERENCES users(ID)
+    FOREIGN KEY (UserID) REFERENCES users(ID),
+    ON DELETE CASCADE
 );
 
 CREATE TABLE admins (
