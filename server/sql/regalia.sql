@@ -13,7 +13,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE orders (
-    OrderID int NOT NULL,
+    OrderID int NOT NULL AUTO_INCREMENT,
     UserID int NOT NULL,
     Date_Posted date NOT NULL,
     Height text,
