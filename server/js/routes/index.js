@@ -80,12 +80,10 @@ router.post('/registerSubmit', (req, res) => {
             console.log(admin_code == secret)*/
             
             if(admin_code == secret){
-                IsAdmin = true;
+                IsAdmin = 1;
                 canCreate = true;
-            } else {
-                IsAdmin = false;
-            }
-
+            } 
+            
             if(canCreate) {
                 config.query("SELECT COUNT(Email) FROM users WHERE Email =  + '" + data.email + "'", (err, row) => {
                     if(err) throw (err);
