@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Marist Regalia Order Form</title>
-  <link rel="stylesheet" type="text/css" href="css/index.css">
-  <script type="text/javascript" src="js/form.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/index.css">
+  <script type="text/javascript" src="../js/form.js"></script>
   <meta charset="UTF-8">
 </head>
 <body>
@@ -11,9 +11,11 @@
     </div>
     <br />
   <div id="mainContent">
-    <img src="images/logo.png"><br />  
+    <img src="../images/logo.png"><br />  
     <div id="selBox">
-        <form id="boxContents" onsubmit="event.preventDefault(); validateForm()"><br />
+        <form id="boxContents" onsubmit="validateForm()" action="/u/submitForm" method="post"><br />
+          
+          <!--
           <br />
           <input type="text" name="fname" id="fname" placeholder="First Name" onclick="unRed('fname')"><span class="invalid"></span>
           <br />
@@ -27,9 +29,11 @@
           <input type="text" name="cwid" id="cwid" placeholder="CWID" onclick="unRed('cwid')">
           <br />
           <br />
+          -->
           
+          <div id="capcontent">
           <div id="tooltip">
-            <img src="images/info.png" style="height: 17.5px; width: 17.5px" id="icon">
+            <img src="../images/info.png" style="height: 17.5px; width: 17.5px" id="icon">
             <div id="tooltipcontent">
               <table id="capsizes" style="display: flex; flex-direction: column; align-items: center;">
                 <tr>Cap Sizing Chart</tr>
@@ -135,6 +139,7 @@
             <option value="7 7/8">7 7/8</option>
             <option value="8">8</option>
           </select>
+          </div>
           <br />
           <br />
 
@@ -142,6 +147,7 @@
           <br />
           <br />
 
+          <div id="heightcontent">
           <label style="opacity: .7">Height</label>
           <select name="heightFeet" id="heightFeet">
             <option value="-">-</option>
@@ -170,15 +176,18 @@
             <option value="10">10"</option>
             <option value="11">11"</option>
           </select>
+          </div>
           <br />
           <br />
 
+          <div id="degreecontent">
           <label style="opacity: .7">Degree Level</label> 
             <select name="degree" id="degree">
               <option value="Bachelors">Bachelors</option>
               <option value="Masters">Masters</option>
               <option value="Doctoral">Doctoral</option>
             </select>
+          </div>
           <br />  
           <br />
   

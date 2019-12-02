@@ -189,5 +189,9 @@ table, th, td {
     right: 115%;
 }
 
+#userError {
+    visibility: hidden;
+    border-style: solid;
+}
 
 

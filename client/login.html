@@ -12,26 +12,29 @@
     </div>
     <br />
     <div id="mainContent">
-        <img src="images/logo.png">
+        <img src="images/logo.png" style="margin:10px;">
         <div id="selBox">
-                <form id="boxContents" action="/loginSubmit" method="post"><br />
+                <form id="boxContents" onsubmit="validateLogin();" action="/loginSubmit" method="post"><br />
                 <!-- Right now the above line calls the /loginSubmit route in index.js, but it needs to be able to do the prevent default-->
                 <!-- validation like the one in the regalia form. I know it will probably look something like the line below-->
                 <!-- <form id="boxContents" onsubmit="event.preventDefault(); validateLogin()" action="/loginSubmit" method="post"> -->
+                    <div id="userError">
+                        <p>No existing account associated with that email. Try again.</p>
+                    </div>
                     <br />
-                    <h3 id="title">Please enter your credentials</h3>
+                    <h4 id="title">Please enter your Marist Regalia Account and Password</h4><br />
                     <div id="buttons">
-                        <input type="text" name="email" id="email" placeholder="Email" onclick="unRed('email')"><span class="invalid"></span>
-                        
+                        <input type="text" name="email" id="email" placeholder="Marist Email" onclick="unRed('email')" autocomplete="username"><span class="invalid"></span>
                         <br />
-                        <input type="text" name="password" id="password" placeholder="Password" onclick="unRed('password')"><span class="invalid"></span>
+                        <br />
+                        <input type="password" name="password" id="password" placeholder="Password" onclick="unRed('password')" autocomplete="current-password"><span class="invalid"></span>
                     </div>
                     <div id="but"> 
-                        <button type="submit" id="sub">Login</button>
-                      </div>
-                    <br />
-                    <br />
-                    <a href="register">Register Here</a>
+                        <button type="submit" id="sub">Login</button>    
+                    </div>
+                    <div style="margin-top: 15px; margin-bottom: 10px;">
+                        <a href="register" style="font-size:small">Haven't registered for Marist Regalia yet? Register Here.</a>
+                    </div>     
             </form>
         </div>
     </div>

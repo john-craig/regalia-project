@@ -28,7 +28,8 @@ module.exports = function(passport) {
                     row[0].First_Name,
                     row[0].Last_Name,
                     row[0].Email,
-                    row[0].Hashed_Pass
+                    row[0].Hashed_Pass,
+                    row[0].IsAdmin
                 );
 
                 bcrypt.compare(password, user.pass, (err, isMatch) => {
@@ -54,7 +55,8 @@ module.exports = function(passport) {
                 row[0].First_Name,
                 row[0].Last_Name,
                 row[0].Email,
-                row[0].Hashed_Pass
+                row[0].Hashed_Pass,
+                row[0].IsAdmin
             );
             done(err, user);
         });

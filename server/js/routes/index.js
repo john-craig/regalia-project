@@ -28,18 +28,10 @@ router.get('/login', forwardAuthenticated, (req, res) => res.sendFile('login.htm
 //Register
 router.get('/register', forwardAuthenticated, (req, res) => res.sendFile('register.html', {root: './client'}));
 
-//Form page
-router.get('/form', forwardAuthenticated, (req, res) => res.sendFile('regalia_form.html', {root: './client'}));
-
-//Admin page
-router.get('/admin', adminAuthenticated, (req, res) => res.sendFile('admin.html', {root: './client'}));
-
-//Thank you page
-router.get('/thanks', forwardAuthenticated, (req, res) => res.sendFile('thanks.html', {root: './client'}));
-
 //Registration handler
 router.post('/registerSubmit', (req, res) => {
     var data = req.body;
+    //console.log(data);
     var id = data.id;
     //var first = data.name.split(" ")[0];
     //var last = data.name.split(" ")[1];
@@ -48,12 +40,17 @@ router.post('/registerSubmit', (req, res) => {
     var pass = data.password;
 
     //Note -- this assumes that the email will not have numeric characters before the '@' sign; should be okay as long as validation occurs before this call
-    var first = email.split("@")[0].split(".")[0]
-    var last = email.split("@")[0].split(".")[1]
+    var first = email.split("@")[0].split(".")[0];
+    var last = email.split("@")[0].split(".")[1];
 
-    var secret = data.secret
+    var digit = new RegExp("[0-9]");
+    if(digit.test(last.charAt(last.length-1))) {
+        last = last.slice(0,-1);
+    }
 
-    var isAdmin = false;
+    var secret = data.secret;
+
+    var IsAdmin = false;
     var canCreate = false;
 
     config.query("SELECT Secret_Code FROM secrets ORDER BY Date_Set DESC LIMIT 1", (err, row) => {
@@ -83,10 +80,10 @@ router.post('/registerSubmit', (req, res) => {
             console.log(admin_code == secret)*/
             
             if(admin_code == secret){
-                isAdmin = true;
+                IsAdmin = true;
                 canCreate = true;
             } else {
-                isAdmin = false;
+                IsAdmin = false;
             }
 
             if(canCreate) {
@@ -110,9 +107,9 @@ router.post('/registerSubmit', (req, res) => {
                             last,
                             email,
                             pass,
-                            isAdmin
+                            IsAdmin
                         );
-                        
+                        console.log(newUser);
                         //Hash password
                         bcrypt.genSalt(10, (err, salt) => 
                             bcrypt.hash(pass, salt, (err, hash) => {
@@ -120,9 +117,9 @@ router.post('/registerSubmit', (req, res) => {
                                 //Set hased password
                                 newUser.pass = hash;
                                 //Save the user data
-                                config.query("INSERT INTO users VALUES ('" + id + "', '" + email + "', '" + first + "', '" + last + "', '" + hash + "', " + isAdmin + ")", (err, res) => {
+                                config.query("INSERT INTO users VALUES ('" + id + "', '" + email + "', '" + first + "', '" + last + "', '" + hash + "', '" + IsAdmin + "')", (err, res) => {
                                     if(err) throw err;
-                                    console.log(res)
+                                    //console.log(res)
                                 });
                             
                         }));
@@ -144,9 +141,19 @@ router.post('/registerSubmit', (req, res) => {
 //Login handler
 router.post('/loginSubmit', (req, res, next) => {
     passport.authenticate('local', {
-        successRedirect: '/',
+        successRedirect: '/u/dashboard',
         failureRedirect: '/login'   
     })(req, res, next);
+});
+
+router.post('/usercheck/:email', (req, res) => {
+    var email = req.params.email;
+    //console.log(email);
+    config.query("SELECT COUNT(Email) FROM users WHERE Email =  + '" + email + "'", (err, row) => {
+        if(err) throw (err);
+        var count = row[0]['COUNT(Email)'];
+        res.send({data: count});
+    });
 });
 
 router.post('/changeSecret', adminAuthenticated, (req, res) => {

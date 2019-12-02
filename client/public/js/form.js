@@ -30,10 +30,12 @@ function validateForm() {
   var lbs = new RegExp("[\x00]");
   var mail = new RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$");
 
+  /*
   var fname = document.getElementById("fname").value.trim();
   var lname = document.getElementById("lname").value.trim();
   var email = document.getElementById("email").value.trim();
   var cwid = document.getElementById("cwid").value.trim();
+  */
   var capsize = document.getElementById("cap").value;
   var weight = document.getElementById("weight").value;
   var heightFeet = document.getElementById("heightFeet").value;
@@ -43,6 +45,7 @@ function validateForm() {
   var city = document.getElementById("city").value.trim();
   var state = document.getElementById("state").value.trim();
 
+  /*
   if(alpha.test(fname) == false) {
     invalid = true;
     errors.push("Invalid field: First Name");
@@ -68,7 +71,7 @@ function validateForm() {
     errors.push("Invalid field: CWID");
     document.getElementById("cwid").classList.add('redbox');
   }
-
+  */
   if(!num.test(weight) && weight != "") {
     invalid = true;
     errors.push("Invalid field: Weight");
@@ -98,6 +101,7 @@ function validateForm() {
     alert(errors.toString());
     return false;
   } 
+
   else {
 
     if(capsize == "-" && weight == "" && heightFeet == "-" && heightInches == "-") {
@@ -107,7 +111,7 @@ function validateForm() {
   
     if(weight == "" && heightFeet == "-" && heightInches == "-" && capsize != "-") {
       if(confirm("No selection made for height and weight (only ordering cap). Is this correct? (This choice can be updated.)")) {
-        alert("Valid form.");
+        //Do nothing...submit form normally
       } else {
         return false;
       }
@@ -115,7 +119,7 @@ function validateForm() {
     
     if(weight != "" && heightFeet != "-" && heightInches != "-" && capsize == "-") {
       if(confirm("No selection for cap size (only ordering gown). Is this correct? (This choice can be updated.)")) {
-        alert("Valid form.");
+        //Do nothing...submit form normally
       } else {
         return false;
       }
@@ -141,9 +145,6 @@ function validateForm() {
     }
     
   } 
-
-
-  alert("Valid form.");
  
 }
 
