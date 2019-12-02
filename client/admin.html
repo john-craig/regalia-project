@@ -1,42 +1,53 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Marist Regalia Admin Page</title>
-  
-  <link rel="stylesheet" type="text/css" href="public/css/index.css">
-  <script type="text/javascript" src="public/js/index.js"></script>
-</head>
+    <head>
+        <title>Marist Regalia Admin Page</title>
+
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <script type="text/javascript" src="js/datatable.js"></script>
+    </head>
+
 <body>
     <div id="header">
-        <h1>Marist College</h1>
     </div>
-    <div id="selBox">
-        <form id="boxContents">
-            <h2>Viewing Orders For:</h2>
-            <select type="text" name="degree">
-                <option value="x">2020</option>
-            </select>
+    <br />
+    <div id="mainContent">
+        <img src="images/logo.png">
+        <div id="selBox">     
+                    <h3 id="title">Adminstrator Options:</h3>
+                    <br />
+                        <table id="formData">
+                            <tr id="labels">
+                                <td>Name</td>
+                                <td>CWID</td>
+                                <td>Email</td>
+                                <td>Weight</td>
+                                <td>Height</td>
+                                <td>College</td>
+                                <td>City</td>
+                                <td>State</td>
+                            </th>
+                        </table>
+                        <br />
+                        <button id="sub" type="button" onclick="getData()">Get Data</button>   <button id="sub" type="button" onclick="">Download</button>
+                        <br /> 
+                        <br />
 
-            <table id="orders">
-                    <tr>
-                        <th>Firstname</th>
-                        <th>Lastname</th>
-                        <th>Age</th>
-                    </tr>
-                    <tr>
-                        <td>Jill</td>
-                        <td>Smith</td>
-                        <td>50</td>
-                    </tr>
-                    <tr>
-                        <td>Eve</td>
-                        <td>Jackson</td>
-                        <td>94</td>
-                    </tr>
-            </table>
-            <button type="button" onclick="downloadSheet()" id="sub">Download</button>
-            <br>
-        </form>
+                        <form id="boxContents" action="/changeSecret" method="post">
+                        <p>Change site passcode</p>
+                        <br />
+                        <input type="text" name="passcode" id="passcode" placeholder="" onclick="unRed('passcode')"><span class="invalid"></span>
+                        <br />
+                        <button type="submit" onclick="" id="sub">Change</button>
+                        </form>
+
+                        <br />
+                        <p>Add new administrator</p>
+                        <input type="text" name="email" id="admin_email" placeholder="Email" onclick="unRed('email')"><span class="invalid"></span>
+                        <br />
+                        <button type="submit" onclick="" id="sub">Set</button>
+                        
+        </div>
     </div>
 </body>
 </html>
