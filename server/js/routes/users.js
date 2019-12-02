@@ -16,8 +16,18 @@ router.post('/submitForm', (req, res) => {
     var formData = req.body;
     var userData = req.user;
 
-    console.log(userData);
-    console.log(formData);
+    var date = new Date();
+    let dd = date.getDate();
+    let mm = date.getMonth();
+    let yyyy = date.getFullYear();
+    
+    
+    //console.log(userData);
+    //console.log(formData);
+
+    let id = userData.id;
+    let cur_date = yyyy + "-" + mm + "-" + dd;
+    console.log(cur_date);
 })
 
 module.exports = router;

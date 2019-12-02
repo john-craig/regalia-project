@@ -50,7 +50,7 @@ router.post('/registerSubmit', (req, res) => {
 
     var secret = data.secret;
 
-    var IsAdmin = false;
+    var IsAdmin = 0;
     var canCreate = false;
 
     config.query("SELECT Secret_Code FROM secrets ORDER BY Date_Set DESC LIMIT 1", (err, row) => {
@@ -72,7 +72,7 @@ router.post('/registerSubmit', (req, res) => {
         config.query("SELECT Secret_Code FROM secrets ORDER BY Date_Set ASC LIMIT 1", (err, row) => {
             if(err) throw (err);
     
-            var admin_code = row[0].Secret_Code
+            var admin_code = row[0].Secret_Code;
     
             /*console.log("Admin account")
             console.log(admin_code)

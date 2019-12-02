@@ -8,7 +8,7 @@ CREATE TABLE users (
     First_Name text NOT NULL,
     Last_Name text NOT NULL,
     Hashed_Pass text NOT NULL,
-    IsAdmin boolean NOT NULL DEFAULT False,
+    IsAdmin tinyint NOT NULL,
     PRIMARY KEY (ID)	
 );
 
