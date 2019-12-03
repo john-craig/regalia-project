@@ -4,7 +4,7 @@
         <title>Marist Regalia Admin Page</title>
 
         <link rel="stylesheet" type="text/css" href="../css/index.css">
-        <script type="text/javascript" src="../js/datatable.js"></script>
+        <script type="text/javascript" src="../js/admin.js"></script>
     </head>
 
 <body>
@@ -16,6 +16,7 @@
         <div id="selBox">     
                     <h3 id="title">Adminstrator Options:</h3>
                     <br />
+                        <!--<form id="boxContents" action="/u/datatable" method="post">-->
                         <table id="formData">
                             <tr id="labels">
                                 <td>Name</td>
@@ -28,10 +29,18 @@
                                 <td>State</td>
                             </th>
                         </table>
+                        
+                        <!--<input type="text" name="date" id="date" placeholder="Date" onclick="unRed('date')"><span class="invalid"></span>-->
+
+                        <input type="date" id="date" name="date"
+                            value="2018-07-22"
+                            min="2016-01-01">
+
                         <br />
-                        <button id="sub" type="button" onclick="getData()">Get Data</button>   <button id="sub" type="button" onclick="">Download</button>
+                        <button type="submit" id="sub" onclick="getData()">Get Orders</button>
                         <br /> 
                         <br />
+                        <!--</form>-->
 
                         <form id="boxContents" action="/u/changeSecret" method="post">
                             <p>Change site passcode</p>

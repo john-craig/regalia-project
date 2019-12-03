@@ -1,10 +1,17 @@
 
 function getData() {
-    document.getElementById("data").hidden = true;
+    //document.getElementById("data").hidden = true;
 
     var table = document.getElementById("formData");
+    var date = document.getElementById('date').value
 
-    fetch('/api/datatable')
+    console.log(date)
+
+    fetch('/u/datatable/'+date, {
+        method:'POST',
+        body: date,
+        headers: {'Content-Type': 'application/json, charset=UTF-8'}
+    })
     .then((res) => res.json())
     .then(function(data) {
         if(data.length > 0) {

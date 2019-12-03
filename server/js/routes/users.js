@@ -76,6 +76,19 @@ router.post('/submitForm', (req, res) => {
     res.redirect('thanks');
 });
 
+router.post('/datatable/:date', (req, res) => {
+    var date = req.params.date
+    console.log(date)
+
+    config.query("SELECT * FROM orders WHERE Date_Posted > '" + date + "'", (err, row) => {
+        if(err) throw(err)
+
+        console.log(row)
+        res.send(row)
+    });
+
+   
+})
 
 router.post('/promoteAdmin', adminAuthenticated, (req, res) => {
     var data = req.body
