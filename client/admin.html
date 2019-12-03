@@ -3,8 +3,8 @@
     <head>
         <title>Marist Regalia Admin Page</title>
 
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <script type="text/javascript" src="js/datatable.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <script type="text/javascript" src="../js/datatable.js"></script>
     </head>
 
 <body>
@@ -12,7 +12,7 @@
     </div>
     <br />
     <div id="mainContent">
-        <img src="images/logo.png">
+        <img src="../images/logo.png">
         <div id="selBox">     
                     <h3 id="title">Adminstrator Options:</h3>
                     <br />
@@ -33,10 +33,10 @@
                         <br /> 
                         <br />
 
-                        <form id="boxContents" action="/changeSecret" method="post">
+                        <form id="boxContents" action="/u/changeSecret" method="post">
                             <p>Change site passcode</p>
                             <br />
-                            <input type="text" name="passcode" id="passcode" placeholder="" onclick="unRed('passcode')"><span class="invalid"></span>
+                            <input type="text" name="passcode" id="passcode" placeholder="New Secret" onclick="unRed('passcode')"><span class="invalid"></span>
                             <br />
                             <button type="submit" onclick="" id="sub">Change</button>
                         </form>
@@ -44,7 +44,7 @@
                         <br />
                         <br />
 
-                        <form id="boxContents" action="/promoteAdmin" method="post">
+                        <form id="boxContents" action="/u/promoteAdmin" method="post">
                         <p>Add new administrator</p>
                         <input type="text" name="email" id="email" placeholder="Email" onclick="unRed('email')"><span class="invalid"></span>
                         <br />
@@ -54,7 +54,7 @@
                         <br />
                         <br />
 
-                        <form id="boxContents" action="/revokeUser" method="post">
+                        <form id="boxContents" action="/u/revokeUser" method="post">
                         <p>Revoke a user's access</p>
                         <input type="text" name="email" id="email" placeholder="Email" onclick="unRed('email')"><span class="invalid"></span>
                         <br />

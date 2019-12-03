@@ -25,11 +25,12 @@ router.get('/', forwardAuthenticated, (req, res) => res.sendFile('login.html', {
 //Login
 router.get('/login', forwardAuthenticated, (req, res) => res.sendFile('login.html', {root: './client'}));
 
+//Failed Login
+router.get('/loginFail', (req, res) => res.sendFile('loginFail.html', {root: './client'}));
+
 //Register
 router.get('/register', forwardAuthenticated, (req, res) => res.sendFile('register.html', {root: './client'}));
 
-//Admin
-router.get('/admin', forwardAuthenticated, (req, res) => res.sendFile('admin.html', {root: './client'}));
 
 //Registration handler
 router.post('/registerSubmit', (req, res) => {
@@ -152,7 +153,7 @@ router.post('/loginSubmit', (req, res, next) => {
 
     passport.authenticate('local', {
         successRedirect: '/u/dashboard',
-        failureRedirect: '/login'   
+        failureRedirect: '/loginFail'
     })(req, res, next);
 });
 
@@ -164,39 +165,6 @@ router.post('/usercheck/:email', (req, res) => {
         var count = row[0]['COUNT(Email)'];
         res.send({data: count});
     });
-});
-
-router.post('/promoteAdmin', adminAuthenticated, (req, res) => {
-    var data = req.body
-    var email = data.email
-
-    config.query("UPDATE users SET IsAdmin = 1 WHERE Email = '" + email + "'", (err, row) => {
-        if(err) throw (err);
-    });
-
-    res.redirect('/admin')
-});
-
-router.post('/revokeUser', adminAuthenticated, (req, res) => {
-    var data = req.body
-    var email = data.email
-
-    config.query("DELETE FROM users WHERE Email = '" + email + "'", (err, row) => {
-        if(err) throw (err);
-        res.send('/')
-    });
-
-    res.redirect('/admin')
-});
-
-router.post('/changeSecret', adminAuthenticated, (req, res) => {
-    //User should be validated as an administrator too-- but I'll work on that later
-
-    config.query("INSERT INTO secrets (Secret_Code) VALUES ('" + req.body.passcode + "')", (err, res) => {
-        if(err) throw err;
-    });
-
-    res.redirect('/admin')
 });
 
 module.exports = router;

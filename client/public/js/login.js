@@ -1,5 +1,9 @@
+
+/*
 function validateLogin() {
+
     var invalid = false;
+    var bit;
 
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
@@ -12,17 +16,22 @@ function validateLogin() {
     })
     .then((data) => data.json())
     .then((data) => {
-        console.log(data.data);
-        if(data.data == 0) {
+        bit = data.data;
+        console.log(bit);
+        if(bit == 0) {
+            console.log(bit);
             invalid = true;
-            console.log(invalid);  
+        };
+        //if the username exists it will prevent the form from submitting
+        if(invalid) {
+            console.log(invalid);
+            document.getElementById('boxContents').action = "/register";
         }
-        
-    });
+    }); 
 
-    return true;
 }
 
 function unRed(box) {
     document.getElementById(box).classList.remove('redbox');
 }
+*/

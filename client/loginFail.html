@@ -14,7 +14,8 @@
     <div id="mainContent">
         <img src="images/logo.png" style="margin:10px;">
         <div id="selBox">
-                <form id="boxContents" onsubmit="return validateLogin();" action="/loginSubmit" method="post"><br />
+                <form id="boxContents" action="/loginSubmit" method="post"><br />
+                    <div id="userError">Invalid account name or password. Please try again.</div>
                     <h4 id="title">Please enter your Marist Regalia Account and Password</h4><br />
                     <div id="buttons">
                         <input type="text" name="email" id="email" placeholder="Marist Email" onclick="unRed('email')" autocomplete="username"><span class="invalid"></span>

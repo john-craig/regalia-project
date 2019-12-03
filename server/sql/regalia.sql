@@ -9,8 +9,7 @@ CREATE TABLE users (
     Last_Name text NOT NULL,
     Hashed_Pass text NOT NULL,
     IsAdmin tinyint NOT NULL,
-    PRIMARY KEY (ID),
-    ON DELETE CASCADE
+    PRIMARY KEY (ID)
 );
 
 CREATE TABLE orders (
