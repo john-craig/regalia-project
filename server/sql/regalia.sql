@@ -2,61 +2,43 @@ DROP DATABASE if exists regalia;
 CREATE DATABASE regalia;
 USE regalia;
 
-CREATE TABLE faculty (
-    FacultyID int NOT NULL DEFAULT 0,
-    First_Name text,
-    Last_Name text,
-    Email text,
-    PRIMARY KEY (FacultyID)
-);
-
-CREATE TABLE gowns (
-    GownID int NOT NULL,
-    Height text,
-    Weight text,
-    PRIMARY KEY (GownID)
-);
-
-CREATE TABLE caps (
-    CapID int NOT NULL,
-    Cap_Size text,
-    PRIMARY KEY (CapID)
-);
-
-CREATE TABLE colleges (
-    CollegeID int NOT NULL,
-    College_Name text,
-    College_City text,
-    College_State text,
-    PRIMARY KEY (CollegeID)
+CREATE TABLE users (
+    ID int NOT NULL,
+    Email text NOT NULL,    
+    First_Name text NOT NULL,
+    Last_Name text NOT NULL,
+    Hashed_Pass text NOT NULL,
+    IsAdmin tinyint NOT NULL,
+    PRIMARY KEY (ID)
 );
 
 CREATE TABLE orders (
+    OrderID int NOT NULL AUTO_INCREMENT,
+    UserID int NOT NULL,
     Date_Posted date NOT NULL,
-    FacultyID int NOT NULL,
-    GownID int DEFAULT 0,
-    CapID int DEFAULT 0,
-    CollegeID int DEFAULT 0,
-    PRIMARY KEY (Date_Posted, FacultyID),
-    FOREIGN KEY (GownID) REFERENCES gowns (GownID),
-    FOREIGN KEY (CapID) REFERENCES caps (CapID),
-    FOREIGN KEY (CollegeID) REFERENCES colleges (CollegeID)
+    Height text,
+    Weight text,
+    Cap_Size text,
+    Degree_Level text NOT NULL,
+    College_Name text NOT NULL,
+    College_City text NOT NULL,
+    College_State text NOT NULL,
+    PRIMARY KEY (OrderID),
+    FOREIGN KEY (UserID) REFERENCES users(ID)
 );
 
-CREATE TABLE admin (
-    AdminID int DEFAULT 0,
+CREATE TABLE admins (
+    AdminID int NOT NULL,
     Email text,
     PRIMARY KEY (AdminID)
-)
+);
 
-INSERT INTO gowns
-VALUES (0, 'N/A', 'N/A');
+CREATE TABLE secrets (
+    Date_Set TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Secret_Code text NOT NULL,
+    PRIMARY KEY (Date_Set)
+);
 
-INSERT INTO caps
-VALUES (0, 'N/A');
-
-INSERT INTO faculty
-VALUES ('12345678', 'Brian', 'Gormanly', 'brian.gormanly@marist.edu');
 
 
 

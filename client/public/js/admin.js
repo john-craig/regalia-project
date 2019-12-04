@@ -1,10 +1,17 @@
 
 function getData() {
-    document.getElementById("data").hidden = true;
+    //document.getElementById("data").hidden = true;
 
     var table = document.getElementById("formData");
+    var date = document.getElementById('date').value
 
-    fetch('/api/datatable')
+    console.log(date)
+
+    fetch('/u/datatable/'+date, {
+        method:'POST',
+        body: date,
+        headers: {'Content-Type': 'application/json, charset=UTF-8'}
+    })
     .then((res) => res.json())
     .then(function(data) {
         if(data.length > 0) {
@@ -29,7 +36,7 @@ function getData() {
                 var state = row.insertCell(-1);
 
                 name.innerText = data[i].First_Name + " " + data[i].Last_Name;
-                cwid.innerText = data[i].FacultyID;
+                cwid.innerText = data[i].ID;
                 email.innerText = data[i].Email;
                 weight.innerText = data[i].Weight;
                 height.innerText = data[i].Height;
@@ -42,4 +49,19 @@ function getData() {
             }
         }
     })
+}
+
+function changeCode() {
+
+    var code = document.getElementById('passcode').value;
+
+    fetch('/u/changeSecret'+code, {
+        method:'POST',
+        body: code,
+        headers: {'Content-Type': 'application/json, charset=UTF-8'}
+    })
+    .then((res) => res.json())
+    .then(function(data) {
+        console.log(data);
+    });
 }

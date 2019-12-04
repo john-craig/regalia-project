@@ -1,42 +1,86 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Marist Regalia Admin Page</title>
-  
-  <link rel="stylesheet" type="text/css" href="css/index.css">
-  <script type="text/javascript" src="js/index.js"></script>
-</head>
+    <head>
+        <title>Marist Regalia Admin Page</title>
+
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <script type="text/javascript" src="../js/admin.js"></script>
+    </head>
+
 <body>
     <div id="header">
-        <h1>Marist College</h1>
+        <div id="headerOptions">
+            <a href="../logout" style="font-size:small">Logout</a>
+        </div>
     </div>
-    <div id="selBox">
-        <form id="boxContents">
-            <h2>Viewing Orders For:</h2>
-            <select type="text" name="degree">
-                <option value="x">2020</option>
-            </select>
+    <br />
+    <div id="mainContent">
+        <img src="../images/logo.png">
+        <div id="adminBox">     
+                    <h3 id="title">Adminstrator Options:</h3>
+                    <br />
+                        <!--<form id="boxContents" action="/u/datatable" method="post">-->
+                        <table id="formData">
+                            <tr id="labels">
+                                <td>Name</td>
+                                <td>CWID</td>
+                                <td>Email</td>
+                                <td>Weight</td>
+                                <td>Height</td>
+                                <td>College</td>
+                                <td>City</td>
+                                <td>State</td>
+                            </th>
+                        </table>
 
-            <table id="orders">
-                    <tr>
-                        <th>Firstname</th>
-                        <th>Lastname</th>
-                        <th>Age</th>
-                    </tr>
-                    <tr>
-                        <td>Jill</td>
-                        <td>Smith</td>
-                        <td>50</td>
-                    </tr>
-                    <tr>
-                        <td>Eve</td>
-                        <td>Jackson</td>
-                        <td>94</td>
-                    </tr>
-            </table>
-            <button type="button" onclick="downloadSheet()" id="sub">Download</button>
-            <br>
-        </form>
+                        <br />
+                        
+                        <!--<input type="text" name="date" id="date" placeholder="Date" onclick="unRed('date')"><span class="invalid"></span>-->
+
+                        <input type="date" id="date" name="date"
+                            value=""
+                            min="2016-01-01">
+
+                        <br />
+                        <button type="submit" id="sub" onclick="getData()">Get Orders</button>
+                        <br /> 
+                        <br />
+                        <!--</form>-->
+
+                        <!-- <form id="boxContents" action="/u/changeSecret" method="post"> -->
+                            <p>Change site passcode</p>
+                            <br />
+                            <input type="text" name="passcode" id="passcode" placeholder="New Secret"><span class="invalid"></span>
+                            <br />
+                            <button type="submit" onclick="changeCode()" id="sub">Change</button>
+                        <!-- </form> -->
+
+                        <br />
+                        <br />
+
+                        <form id="boxContents" action="/u/promoteAdmin" method="post">
+                        <p>Add new administrator</p>
+                        <input type="text" name="email" id="email" placeholder="Email" onclick="unRed('email')"><span class="invalid"></span>
+                        <br />
+                        <button type="submit" onclick="" id="sub">Set</button>
+                        </form>
+
+                        <br />
+                        <br />
+
+                        <form id="boxContents" action="/u/revokeUser" method="post">
+                        <p>Revoke a user's access</p>
+                        <input type="text" name="email" id="email" placeholder="Email" onclick="unRed('email')"><span class="invalid"></span>
+                        <br />
+                        <button type="submit" onclick="" id="sub">Set</button>
+                        </form>
+
+                        <br />
+                        <br />
+
+                        
+                        
+        </div>
     </div>
 </body>
 </html>
