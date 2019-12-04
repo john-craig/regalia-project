@@ -31,6 +31,16 @@ router.get('/loginFail', (req, res) => res.sendFile('loginFail.html', {root: './
 //Register
 router.get('/register', forwardAuthenticated, (req, res) => res.sendFile('register.html', {root: './client'}));
 
+//Failed registration
+router.get('/registerFail', (req, res) => res.sendFile('registerFail.html', {root: './client'}));
+
+//Logout
+router.get('/logout', (req, res) => {
+    req.logout();
+    console.log('logged out');
+    res.redirect('/');
+});
+
 
 //Registration handler
 router.post('/registerSubmit', (req, res) => {
@@ -101,7 +111,7 @@ router.post('/registerSubmit', (req, res) => {
                     if(count > 0) {
                         //Redirect to registration page with error message
                         console.log("fail");
-                        res.sendFile('register.html', {root: './client'});
+                        res.redirect('/registerFail');
             
                     } else {
                         //config.query("SELECT")
@@ -134,8 +144,7 @@ router.post('/registerSubmit', (req, res) => {
                     
                 })
             } else {
-                res.redirect('/register');
-                //alert("Incorrect event code")
+                res.redirect('/registerFail');
             }
         })
     })

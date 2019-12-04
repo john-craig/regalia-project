@@ -50,3 +50,18 @@ function getData() {
         }
     })
 }
+
+function changeCode() {
+
+    var code = document.getElementById('passcode').value;
+
+    fetch('/u/changeSecret'+code, {
+        method:'POST',
+        body: code,
+        headers: {'Content-Type': 'application/json, charset=UTF-8'}
+    })
+    .then((res) => res.json())
+    .then(function(data) {
+        console.log(data);
+    });
+}

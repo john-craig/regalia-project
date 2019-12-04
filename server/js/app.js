@@ -49,7 +49,6 @@ app.use((req, res, next) => {
 app.use('/', require('./routes/index'));
 app.use('/u', require('./routes/users'));
 
-
 // Set database connection credentials
 const config = mysql.createConnection ({
     host: '10.10.9.105',

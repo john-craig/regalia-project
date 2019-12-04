@@ -115,14 +115,32 @@ router.post('/revokeUser', adminAuthenticated, (req, res) => {
     res.redirect('/admin')
 });
 
-router.post('/changeSecret', adminAuthenticated, (req, res) => {
+router.post('/changeSecret:code', (req, res) => {
     //User should be validated as an administrator too-- but I'll work on that later
+    var bit = '1';
+    var code = req.params.code;
+    console.log(req.params.code);
+    
+    config.query("SELECT 1 FROM secrets WHERE Secret_Code = '"+code+"';", (err, res) => {
+        if (err) throw err;
+        var len = res.length;
 
-    config.query("INSERT INTO secrets (Secret_Code) VALUES ('" + req.body.passcode + "')", (err, res) => {
-        if(err) throw err;
+        if(len == 1) {
+            bit = '0';
+            console.log('code exists');
+        } else {
+            config.query("INSERT INTO secrets (Secret_Code) VALUES ('" + req.params.code + "');", (err, res) => {
+                if(err) throw err;
+            });  
+        };
+    
     });
 
-    res.redirect('/admin')
+    
+    res.send(bit);
+    
 });
+
+
 
 module.exports = router;

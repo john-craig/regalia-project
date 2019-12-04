@@ -2,9 +2,7 @@
 <html>
     <head>
         <title>Marist Regalia Order Page</title>
-
         <link rel="stylesheet" type="text/css" href="/css/index.css">
-        <script type="text/javascript" src="js/login.js"></script>
     </head>
 
 <body>
@@ -15,13 +13,14 @@
         <img src="images/logo.png" style="margin:10px;">
         <div id="selBox">
                 <form id="boxContents" action="/loginSubmit" method="post"><br />
-                    <div id="userError">Invalid account name or password. Please try again.</div>
+                    <div id="userFail">Invalid account name or password. Please try again.</div>
+                    <div id="userError"></div>
                     <h4 id="title">Please enter your Marist Regalia Account and Password</h4><br />
                     <div id="buttons">
-                        <input type="text" name="email" id="email" placeholder="Marist Email" onclick="unRed('email')" autocomplete="username"><span class="invalid"></span>
+                        <input type="text" name="email" id="email" placeholder="Marist Email" autocomplete="username"><span class="invalid"></span>
                         <br />
                         <br />
-                        <input type="password" name="password" id="password" placeholder="Password" onclick="unRed('password')" autocomplete="current-password"><span class="invalid"></span>
+                        <input type="password" name="password" id="password" placeholder="Password" autocomplete="current-password"><span class="invalid"></span>
                     </div>
                     <div id="but"> 
                         <button type="submit" id="sub">Login</button>    
@@ -32,5 +31,6 @@
             </form>
         </div>
     </div>
+    <script type="text/javascript" src="js/login.js"></script>
 </body>
 </html>

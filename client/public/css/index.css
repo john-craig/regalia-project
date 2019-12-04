@@ -189,8 +189,8 @@ table, th, td {
     right: 115%;
 }
 
-#userError {
-    padding: 3px;
+#userFail {
+    padding: 6px;
     border-style: solid;
     border-width: 2px;
     border-color: lightgray;
@@ -198,4 +198,19 @@ table, th, td {
     background-color: lightpink;
 }
 
+#userError {
+    visibility: hidden;
+    padding: 6px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: lightgray;
+    border-radius: 5px;
+    background-color: lightpink;
+}
+
+#headerOptions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
 
