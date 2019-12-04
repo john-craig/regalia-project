@@ -16,8 +16,20 @@ input {
     padding: 10px;
 }
 
-table, th, td {
+table {
+    border-radius: 10px;
+    border: 1px solid red;
+}
+
+td {
+    border-radius: 5px;
     border: 1px solid black;
+}
+
+#labels {
+    border-radius: 5px;
+    border: 1px solid red;
+    font-weight: bold;
 }
 
 #header {
