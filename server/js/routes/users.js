@@ -106,32 +106,45 @@ router.post('/datatable/:date', (req, res) => {
     });
 });
 
-router.post('/promoteAdmin', adminAuthenticated, (req, res) => {
-    var data = req.body
-    var email = data.email
+router.post('/promoteAdmin/:email', (req, res) => {
+
+    var email = req.params.email;
 
     config.query("UPDATE users SET IsAdmin = 1 WHERE Email = '" + email + "'", (err, row) => {
         if(err) throw (err);
-
-        console.log(row)
+        console.log("user made admin" + row)
     });
 
-    res.redirect('/u/admin')
 });
 
-router.post('/revokeUser', adminAuthenticated, (req, res) => {
-    var data = req.body
-    var email = data.email
+router.post('/revokeUser/:email', adminAuthenticated, (req, res) => {
 
-    config.query("UPDATE users SET Hashed_Pass = '§§§§§§' WHERE Email = '" + email + "'", (err, row) => {
-        if(err) throw (err);
-        res.send('/')
+    var email = req.params.email;
+
+    config.query("SELECT ID FROM users WHERE Email = '" + email + "';", (err, row) => {
+        var user = row[0];
+        console.log(user);
+        if(user) {
+            console.log("user found")
+            var id = user.ID;
+
+            config.query("DELETE FROM orders WHERE UserId = '" + id + "';", (err, row) => {
+                if (err) throw err;
+                console.log("orders deleted:" + row)
+                config.query("DELETE FROM users WHERE Email = '" + email + "';", (err, row) => {
+                    if(err) throw err;
+                    console.log("user deleted: " + row)
+                });
+            });
+            
+        } else {
+            console.log("no user by that email")
+        };
     });
-
-    res.redirect('/admin')
+    
 });
 
-router.post('/changeSecret:code', (req, res) => {
+router.post('/changeSecret/:code', (req, res) => {
     //User should be validated as an administrator too-- but I'll work on that later
     var bit = true;
     var code = req.params.code;
@@ -144,20 +157,14 @@ router.post('/changeSecret:code', (req, res) => {
 
         console.log(len);
         if(len == 1) {
-            bit = false;
             console.log('code exists');
-            return false;
         } else {
             config.query("INSERT INTO secrets (Secret_Code) VALUES ('" + req.params.code + "');", (err, res) => {
                 if(err) throw err;
             });  
         };
     });
-    
-
-    res.send(bit);
-    
-    
+    res.send(len);
 });
 
 

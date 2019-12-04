@@ -83,22 +83,22 @@ router.post('/registerSubmit', (req, res) => {
         } else {
             canCreate = false;
         }
-
+/*
         config.query("SELECT Secret_Code FROM secrets ORDER BY Date_Set ASC LIMIT 1", (err, row) => {
             if(err) throw (err);
     
             var admin_code = row[0].Secret_Code;
     
-            /*console.log("Admin account")
+            console.log("Admin account")
             console.log(admin_code)
             console.log(secret)
-            console.log(admin_code == secret)*/
+            console.log(admin_code == secret)
             
             if(admin_code == secret){
                 IsAdmin = 1;
                 canCreate = true;
             }
-
+*/
             console.log("Can create")
             console.log(canCreate)
 
@@ -146,8 +146,7 @@ router.post('/registerSubmit', (req, res) => {
             } else {
                 res.redirect('/registerFail');
             }
-        })
-    })
+    });
 
     
     //Check for existing user
