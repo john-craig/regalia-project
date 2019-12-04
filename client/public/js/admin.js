@@ -36,7 +36,7 @@ function getData() {
                 var state = row.insertCell(-1);
 
                 name.innerText = data[i].First_Name + " " + data[i].Last_Name;
-                cwid.innerText = data[i].FacultyID;
+                cwid.innerText = data[i].ID;
                 email.innerText = data[i].Email;
                 weight.innerText = data[i].Weight;
                 height.innerText = data[i].Height;
