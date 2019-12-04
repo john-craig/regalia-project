@@ -19,13 +19,14 @@ function getData() {
             for(var i = 0; i < data.length; i++) {
                 var used = false;
                 for(var j = 0; j < posted.length; j++) {
-                    if(data[i].FacultyID == posted[j]) {
+                    if(data[i].ID == posted[j]) {
                         used = true;
                     }
                 }
                 if(!used) {
                 var row = table.insertRow(-1);
 
+                var date = row.insertCell(-1);
                 var name = row.insertCell(-1);
                 var cwid = row.insertCell(-1);
                 var email = row.insertCell(-1);
@@ -35,6 +36,7 @@ function getData() {
                 var city = row.insertCell(-1);
                 var state = row.insertCell(-1);
 
+                date.innerText = data[i].Date_Posted.split("T")[0];
                 name.innerText = data[i].First_Name + " " + data[i].Last_Name;
                 cwid.innerText = data[i].ID;
                 email.innerText = data[i].Email;
