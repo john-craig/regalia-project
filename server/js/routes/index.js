@@ -164,6 +164,16 @@ router.post('/loginSubmit', (req, res, next) => {
         successRedirect: '/u/dashboard',
         failureRedirect: '/loginFail'
     })(req, res, next);
+
+    /*passport.authenticate('local', function(err, user, info) {
+        console.log(err);
+        console.log(user)
+
+        if (err) { next(err); }
+        if (!user) { res.redirect('/loginFail'); }
+        if (user.IsAdmin) { res.redirect('/u/adminDashboard'); }
+        else { res.redirect('/u/dashboard'); }
+    })(req, res, next);*/
 });
 
 router.post('/usercheck/:email', (req, res) => {

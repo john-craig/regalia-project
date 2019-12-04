@@ -13,10 +13,15 @@ const config = mysql.createConnection ({
 
 
 router.get('/', ensureAuthenticated, (req, res) => 
-res.sendFile('index.html', {root: './client'}));
+    res.sendFile('dashboard.html', {root: './client'}));
 
-router.get('/dashboard', ensureAuthenticated, (req, res) => 
-    res.sendFile('index.html', {root: './client'}));
+router.get('/index', ensureAuthenticated, (req, res) => 
+    res.sendFile('dashboard.html', {root: './client'}));
+
+router.get('/dashboard', ensureAuthenticated, (req, res) => {
+    if(req.user.IsAdmin) { res.sendFile('adminDash.html', {root: './client'});}
+    else { res.sendFile('dashboard.html', {root: './client'});}
+});
 
 router.get('/form', ensureAuthenticated, (req, res) => 
     res.sendFile('regalia_form.html', {root: './client'}));

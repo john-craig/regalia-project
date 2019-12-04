@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Marist Regalia Order Page</title>
+
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <script type="text/javascript" src="../js/index.js"></script>
+    </head>
+
+<body>
+    <div id="header">
+        <div id="headerOptions">
+            <!--<a href="admin" style="font-size:small">Administrator Options</a>-->
+            <a href="../logout" style="font-size:small">Logout</a>
+        </div>
+    </div>
+    <br />
+    <div id="mainContent">
+        <img src="../images/logo.png">
+        <div id="selBox">
+            <form id="boxContents">     
+                    <h3 id="title">Please select one of the following:</h3>
+                    <div id="buttons">
+                        <input type="radio" name="sel" id="keep">I am keeping my order the same this year<br>
+                        <input type="radio" name="sel" id="mod">I want to modify my order for this year<br>
+                        <input type="radio" name="sel" id="none">I am not making an order for this year
+                    </div>
+                    <div id="but">
+                        <button type="button" onclick="indSelection()" id="sub">Select</button>
+                    </div>
+                    <br />
+            </form>
+        </div>
+    </div>
+</body>
+</html>
